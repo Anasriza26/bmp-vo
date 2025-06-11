@@ -24,6 +24,7 @@ import { BookingsPage } from "./bookings-page"
 import { ProfilePage } from "./profile-page"
 import { SidebarInset, SidebarProvider } from "./ui/sidebar"
 import AppSidebar from "./common/Sidebar"
+import BellButton from "./common/BellButton"
 
 
 
@@ -85,9 +86,7 @@ export function TurfDashboard() {
                     </h1>
                     <p className="text-gray-600 mt-1">Track, manage and forecast your turf dashboard.</p>
                   </div>
-                  <Button variant="ghost" size="icon">
-                    <Bell className="w-5 h-5" />
-                  </Button>
+                 <BellButton/>
                 </div>
               </header>
             )}
