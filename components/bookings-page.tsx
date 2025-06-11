@@ -7,6 +7,8 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import CommonTable from "./common/CommonTable"
+import Header from "./common/CommonHeader"
+import CommonHeader from "./common/CommonHeader"
 
 const bookingsData = [
   {
@@ -131,12 +133,10 @@ export function BookingsPage() {
   return (
     <div className="flex flex-col">
       {/* Header */}
-      <header className="bg-white border-b border-gray-200 px-6 py-4">
-        <div>
-          <h1 className="text-2xl font-semibold text-gray-900">Manage Bookings</h1>
-          <p className="text-gray-600 mt-1">Track, manage and forecast your bookings.</p>
-        </div>
-      </header>
+      <CommonHeader
+        title="Manage Bookings"
+        subtitle="Track, manage and forecast your bookings."
+      />
 
       {/* Main Content */}
       <main className="flex-1 p-6">
