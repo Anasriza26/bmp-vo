@@ -6,6 +6,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
+import CommonTable from "./common/CommonTable"
 
 const bookingsData = [
   {
@@ -69,6 +70,14 @@ const bookingsData = [
     date: "Jan 3, 2022",
     status: "Paid",
     customer: { name: "Orlando Diggs", phone: "0774338424" },
+    timeSlot: "08:00 AM",
+    amount: "3500.00",
+  },
+  {
+    id: 9,
+    date: "Jan 4, 2022",
+    status: "Paid",
+    customer: { name: "Anas Riza", phone: "0754121698" },
     timeSlot: "08:00 AM",
     amount: "3500.00",
   },
@@ -155,54 +164,7 @@ export function BookingsPage() {
         </div>
 
         {/* Bookings Table */}
-        <Card>
-          <CardContent className="p-0">
-            <Table>
-              <TableHeader>
-                <TableRow className="border-b border-gray-200">
-                  <TableHead className="text-gray-600 font-medium">Date</TableHead>
-                  <TableHead className="text-gray-600 font-medium">Status</TableHead>
-                  <TableHead className="text-gray-600 font-medium">Customer</TableHead>
-                  <TableHead className="text-gray-600 font-medium">Time Slot</TableHead>
-                  <TableHead className="text-gray-600 font-medium">Amount</TableHead>
-                  <TableHead className="text-gray-600 font-medium"></TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {bookingsData.map((booking) => (
-                  <TableRow key={booking.id} className="border-b border-gray-100">
-                    <TableCell className="font-medium text-gray-900">{booking.date}</TableCell>
-                    <TableCell>
-                      <StatusBadge status={booking.status} />
-                    </TableCell>
-                    <TableCell>
-                      <div>
-                        <div className="font-medium text-gray-900">{booking.customer.name}</div>
-                        <div className="text-sm text-gray-500">{booking.customer.phone}</div>
-                      </div>
-                    </TableCell>
-                    <TableCell className="text-gray-900">{booking.timeSlot}</TableCell>
-                    <TableCell className="text-gray-900">{booking.amount}</TableCell>
-                    <TableCell>
-                      <div className="flex gap-2">
-                        <Button variant="outline" size="sm" className="text-gray-600 hover:text-gray-900">
-                          Reschedule
-                        </Button>
-                        <Button
-                          variant="outline"
-                          size="sm"
-                          className="text-red-600 hover:text-red-700 border-red-200 hover:border-red-300"
-                        >
-                          Cancel
-                        </Button>
-                      </div>
-                    </TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </CardContent>
-        </Card>
+       <CommonTable bookingsData={bookingsData.map(b => ({ ...b, id: String(b.id) }))} />
 
         {/* Pagination */}
         <div className="flex items-center justify-between mt-6">
