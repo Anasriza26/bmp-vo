@@ -1,4 +1,7 @@
+"use client";
+
 import React from "react";
+import { usePathname, useRouter } from "next/navigation";
 import {
   Sidebar,
   SidebarContent,
@@ -9,10 +12,8 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-  SidebarProvider,
-  SidebarInset,
-} from "@/components/ui/sidebar"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+} from "@/components/ui/sidebar";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
   Home,
   Calendar,
@@ -24,32 +25,28 @@ import {
   Percent,
   User,
   Settings,
-  Bell,
-  MoreHorizontal,
-  Sun,
-  Moon,
-  TrendingUp,
-} from "lucide-react"
+} from "lucide-react";
 
 const navigationItems = [
   { title: "Dashboard", icon: Home, page: "dashboard" },
   { title: "Bookings", icon: Calendar, page: "bookings" },
-  { title: "Slots & Rates", icon: Layers, page: "slots-rates" },
-  { title: "Time Slots", icon: Clock, page: "time-slots" },
-  { title: "Weekly Slot & Rate", icon: CalendarDays, page: "weekly-slot-rate" },
+  { title: "Slots & Rates", icon: Layers, page: "slotsrates" },
+  { title: "Time Slots", icon: Clock, page: "timeslots" },
+  { title: "Weekly Slot & Rate", icon: CalendarDays, page: "weeklyslotsrates" },
   { title: "Wallet", icon: Wallet, page: "wallet" },
   { title: "Turf", icon: MapPin, page: "turf" },
   { title: "Discounts", icon: Percent, page: "discounts" },
   { title: "Profile", icon: User, page: "profile" },
-  { title: "Settings", icon: Settings, page: "settings" },
-]
-export default function AppSidebar({
-  currentPage,
-  setCurrentPage,
-}: {
-  currentPage: string;
-  setCurrentPage: (page: string) => void;
-}) {
+  // { title: "Settings", icon: Settings, page: "settings" },
+];
+
+export default function AppSidebar() {
+  const router = useRouter();
+  const pathname = usePathname();
+
+  // Get the current page from the path (e.g., "dashboard", "bookings")
+  const currentPage = pathname?.split("/")[1] || "";
+
   return (
     <Sidebar className="border-r border-gray-200">
       <SidebarHeader className="p-4">
@@ -64,25 +61,29 @@ export default function AppSidebar({
         <SidebarGroup>
           <SidebarGroupContent>
             <SidebarMenu>
-              {navigationItems.map((item) => (
-                <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton
-                    asChild
-                    isActive={currentPage === item.page}
-                    className={
-                      currentPage === item.page
-                        ? "bg-green-500 text-white hover:bg-green-600"
-                        : ""
-                    }
-                    onClick={() => setCurrentPage(item.page)}
-                  >
-                    <a href="#" className="flex items-center gap-3">
-                      <item.icon className="w-4 h-4" />
-                      <span>{item.title}</span>
-                    </a>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              ))}
+              {navigationItems.map((item) => {
+                const isActive = currentPage === item.page;
+
+                return (
+                  <SidebarMenuItem key={item.title}>
+                    <SidebarMenuButton
+                      asChild
+                      isActive={isActive}
+                      className={
+                        isActive
+                          ? "bg-green-500 text-white hover:bg-green-600"
+                          : ""
+                      }
+                      onClick={() => router.push(`/${item.page}`)}
+                    >
+                      <button className="w-full flex items-center gap-3 text-left">
+                        <item.icon className="w-4 h-4" />
+                        <span>{item.title}</span>
+                      </button>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                );
+              })}
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
@@ -98,7 +99,9 @@ export default function AppSidebar({
             <p className="text-sm font-medium text-gray-900 truncate">
               Mohamed Rishad
             </p>
-            <p className="text-xs text-gray-500 truncate">rishad@gmail.com</p>
+            <p className="text-xs text-gray-500 truncate">
+              rishad@gmail.com
+            </p>
           </div>
         </div>
       </SidebarFooter>
