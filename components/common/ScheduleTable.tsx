@@ -53,7 +53,7 @@ const ScheduleTable: React.FC<ScheduleTableProps> = ({ days, timeSlots, classNam
                 )}
               >
                 <span className="font-medium">
-                  {day.number} - {day.day}
+                  {day.number}  {day.day}
                 </span>
               </div>
             ))}
