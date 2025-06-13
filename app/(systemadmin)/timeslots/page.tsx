@@ -1,8 +1,9 @@
-import React from 'react'
+import { TimeSlots as TimeSlotsComponent } from "@/components/timeslots"
 
 const TimeSlots  = () => {
   return (
     <>
+    <TimeSlotsComponent />
     </>
   )
 }
