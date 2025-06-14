@@ -9,6 +9,15 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import CommonTable from "./common/CommonTable"
 import CommonHeader from "./common/CommonHeader"
 
+const columns = [
+  { label: "Date", key: "date" },
+  { label: "Status", key: "status" },
+  { label: "Customer", key: "customer" },
+  { label: "Time Slot", key: "timeSlot" },
+  { label: "Amount", key: "amount" },
+  { label: "", key: "actions" },
+];
+
 const bookingsData = [
   {
     id: 1,
@@ -163,7 +172,10 @@ export function BookingsPage() {
         </div>
 
         {/* Bookings Table */}
-       <CommonTable bookingsData={bookingsData.map(b => ({ ...b, id: String(b.id) }))} />
+       <CommonTable
+         bookingsData={bookingsData.map(b => ({ ...b, id: String(b.id) }))}
+         columns={columns}
+       />
 
         {/* Pagination */}
         <div className="flex items-center justify-between mt-6">

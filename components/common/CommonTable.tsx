@@ -1,8 +1,15 @@
 import { Card, CardContent } from "@/components/ui/card";
-import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from "@/components/ui/table";
-import { Button } from "@/components/ui/button"; // adjust the import based on your project
+import {
+  Table,
+  TableHeader,
+  TableRow,
+  TableHead,
+  TableBody,
+  TableCell,
+} from "@/components/ui/table";
+import { Button } from "@/components/ui/button";
 
-// Dummy StatusBadge component, replace with your actual implementation or import
+// Dummy StatusBadge component, replace with your actual implementation
 const StatusBadge: React.FC<{ status: string }> = ({ status }) => (
   <span className="px-2 py-1 rounded text-xs font-semibold bg-gray-100 text-gray-700">
     {status}
@@ -23,23 +30,28 @@ interface Booking {
   amount: string;
 }
 
-interface BookingTableProps {
-  bookingsData: Booking[];
+interface Column {
+  label: string;
+  key: string;
 }
 
-const CommonTable: React.FC<BookingTableProps> = ({ bookingsData }) => {
-  return (<>
-  <Card>
+interface BookingTableProps {
+  bookingsData: Booking[];
+  columns: Column[];
+}
+
+const CommonTable: React.FC<BookingTableProps> = ({ bookingsData, columns }) => {
+  return (
+    <Card>
       <CardContent className="p-0">
         <Table>
           <TableHeader>
             <TableRow className="border-b border-gray-200">
-              <TableHead className="text-gray-600 font-medium">Date</TableHead>
-              <TableHead className="text-gray-600 font-medium">Status</TableHead>
-              <TableHead className="text-gray-600 font-medium">Customer</TableHead>
-              <TableHead className="text-gray-600 font-medium">Time Slot</TableHead>
-              <TableHead className="text-gray-600 font-medium">Amount</TableHead>
-              <TableHead className="text-gray-600 font-medium"></TableHead>
+              {columns.map((col, idx) => (
+                <TableHead key={idx} className="text-gray-600 font-medium">
+                  {col.label}
+                </TableHead>
+              ))}
             </TableRow>
           </TableHeader>
           <TableBody>
@@ -59,7 +71,11 @@ const CommonTable: React.FC<BookingTableProps> = ({ bookingsData }) => {
                 <TableCell className="text-gray-900">{booking.amount}</TableCell>
                 <TableCell>
                   <div className="flex gap-2">
-                    <Button variant="outline" size="sm" className="text-gray-600 hover:text-gray-900">
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      className="text-gray-600 hover:text-gray-900"
+                    >
                       Reschedule
                     </Button>
                     <Button
@@ -77,9 +93,7 @@ const CommonTable: React.FC<BookingTableProps> = ({ bookingsData }) => {
         </Table>
       </CardContent>
     </Card>
+  );
+};
 
-  </>
-  )
-}
-
-export default CommonTable
+export default CommonTable;
