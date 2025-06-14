@@ -6,6 +6,7 @@ interface CommonCardProps {
   title: string;
   value: string | number;
   valueColor?: string;
+  titleColor?: string;
   subtitle?: string;
   subtitleIcon?: React.ElementType | null;
   subtitleColor?: string;
@@ -13,6 +14,7 @@ interface CommonCardProps {
 
 const CommonCard = ({
   title,
+  titleColor = "text-red-600",
   value,
   valueColor = "text-gray-900",
   subtitle,
