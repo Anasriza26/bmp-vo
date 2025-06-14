@@ -15,8 +15,9 @@ const columns = [
   { label: "Customer", key: "customer" },
   { label: "Time Slot", key: "timeSlot" },
   { label: "Amount", key: "amount" },
-  { label: "", key: "actions" },
+  { label: "Actions", key: "buttons" },
 ];
+
 
 const bookingsData = [
   {
