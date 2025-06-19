@@ -17,7 +17,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <SidebarLayoutClient>{children}</SidebarLayoutClient>
+        {/* <SidebarLayoutClient>{children}</SidebarLayoutClient> */}
+        {children}
       </body>
     </html>
   );
