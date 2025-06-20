@@ -123,7 +123,7 @@ const CheckBooking = () => {
                 src="/User.jpg"
                 alt="Profile"
               />
-              <AvatarFallback>JD</AvatarFallback>
+              <AvatarFallback>AR</AvatarFallback>
             </Avatar>
           </div>
 
