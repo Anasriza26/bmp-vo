@@ -1,4 +1,4 @@
-'use client';  // This will mark the component as a Client Component
+'use client';  
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
@@ -7,7 +7,7 @@ import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import Link from "next/link";
 import Image from "next/image";
-import { useRouter } from "next/navigation";  // Import useRouter for redirection
+import { useRouter } from "next/navigation";  
 
 const SignIn = () => {
   const [email, setEmail] = useState("");
