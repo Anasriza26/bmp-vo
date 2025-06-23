@@ -1,10 +1,10 @@
 import Image from "next/image";
 
-const HeroImage = () => (
+const HeroImage = ({src,alt} : {src: string, alt: string}) => (
   <div className="relative h-96 rounded-xl overflow-hidden shadow-lg">
     <Image
-      src="https://images.pexels.com/photos/274506/pexels-photo-274506.jpeg?auto=compress&cs=tinysrgb&w=800"
-      alt="Futsal Prime - FD aerial view"
+      src={src}
+      alt={alt}
       fill
       className="object-cover"
     />
