@@ -1,7 +1,13 @@
 // app/layout.tsx
 import type { Metadata } from 'next';
 import './globals.css';
-// import SidebarLayoutClient from '@/components/layouts/SidebarLayoutClient';
+import { Inter } from 'next/font/google';
+
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter', // optional
+  display: 'swap',
+});
 
 export const metadata: Metadata = {
   title: 'v0 App',
@@ -15,9 +21,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className={inter.className}>
       <body>
-        {/* <SidebarLayoutClient>{children}</SidebarLayoutClient> */}
         {children}
       </body>
     </html>
