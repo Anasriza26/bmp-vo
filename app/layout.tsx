@@ -1,7 +1,7 @@
 // app/layout.tsx
 import type { Metadata } from 'next';
 import './globals.css';
-import SidebarLayoutClient from '@/components/layouts/SidebarLayoutClient';
+// import SidebarLayoutClient from '@/components/layouts/SidebarLayoutClient';
 
 export const metadata: Metadata = {
   title: 'v0 App',
