@@ -12,7 +12,7 @@ interface Venue {
   image: string;
   sport: string;
   capacity: string;
-  features: string[];
+  features: (string | { label: string })[];
 }
 
 const VenueCard = ({ venue }: { venue: Venue }) => (
@@ -46,14 +46,18 @@ const VenueCard = ({ venue }: { venue: Venue }) => (
       </div>
 
       <div className="flex flex-wrap gap-1 sm:gap-2 mb-3 sm:mb-4">
-        {venue.features.map((feature) => (
-          <span
-            key={feature}
-            className="px-1.5 py-0.5 sm:px-2 sm:py-1 bg-gray-100 text-gray-600 text-xxs sm:text-xs rounded-full"
-          >
-            {feature}
-          </span>
-        ))}
+        {venue.features.map((feature) => {
+          const key = typeof feature === "string" ? feature : feature.label;
+          const label = typeof feature === "string" ? feature : feature.label;
+          return (
+            <span
+              key={key}
+              className="px-1.5 py-0.5 sm:px-2 sm:py-1 bg-gray-100 text-gray-600 text-xxs sm:text-xs rounded-full"
+            >
+              {label}
+            </span>
+          );
+        })}
       </div>
 
       <div className="flex items-center justify-between flex-wrap sm:flex-nowrap gap-2">
@@ -66,7 +70,7 @@ const VenueCard = ({ venue }: { venue: Venue }) => (
             <span className="text-gray-500 text-xs sm:text-sm ml-1">/Hr</span>
           </div>
         </div>
-        <Link href={`/groundDetails/${venue.id}`}>
+        <Link href={`/ground-details/${venue.id}`}>
           <button className="w-full sm:w-auto bg-gradient-to-r from-teal-500 to-green-500 text-white px-4 py-2 sm:px-6 sm:py-3 rounded-lg md:rounded-xl font-medium hover:from-teal-600 hover:to-green-600 transition-all duration-200 hover:scale-105 shadow-md md:shadow-lg text-sm sm:text-base">
             Book Slots
           </button>
