@@ -20,7 +20,7 @@ export default function DateSelector({ selectedDate, setSelectedDate }: any) {
       <div className="grid grid-cols-4 gap-3">
         <button
           onClick={() => setSelectedDate(22)}
-          className={`p-3 rounded-xl border-2 col-span-2 ${
+          className={`p-3 rounded-xl border-2 ${
             selectedDate === 22
               ? "border-green-500 bg-green-500 text-white"
               : "border-gray-200 bg-white text-gray-600 hover:border-gray-300"
