@@ -2,6 +2,7 @@
 
 import React from "react";
 import { usePathname, useRouter } from "next/navigation";
+import Image from "next/image";
 import {
   Sidebar,
   SidebarContent,
@@ -52,7 +53,7 @@ export default function AppSidebar() {
       <SidebarHeader className="p-4">
         <div className="flex items-center gap-2">
           <div className="w-8 h-8 bg-green-500 rounded flex items-center justify-center">
-            <span className="text-white font-bold text-sm">DMP</span>
+             <Image src="/BMP-Logo.jpg" alt="Logo" width={120} height={50} className="w-[120x] h-[50px]" />
           </div>
         </div>
       </SidebarHeader>
