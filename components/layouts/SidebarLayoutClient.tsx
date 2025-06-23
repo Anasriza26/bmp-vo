@@ -18,7 +18,7 @@ export default function SidebarLayoutClient({ children }: { children: React.Reac
         {!shouldHideSidebar && (
           <AppSidebar currentPage={currentPage} setCurrentPage={setCurrentPage} />
         )}
-        <SidebarInset className="flex-1">
+        <SidebarInset className="">
           {children}
         </SidebarInset>
       </div>
