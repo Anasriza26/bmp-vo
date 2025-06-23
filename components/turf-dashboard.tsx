@@ -61,7 +61,7 @@ const eveningSlots = [
 
 export default function DashboardPage() {
   return (
-    <div className="flex flex-col justify-between w-full min-h-screen">
+    <div className="flex flex-col">
       <header className="bg-white border-b border-gray-200 py-4 w-full">
         <div className="flex items-center justify-between w-full px-4">
           <div>
@@ -77,8 +77,8 @@ export default function DashboardPage() {
         </div>
       </header>
 
-      <main className="flex-1 w-full">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8 w-full px-4 pt-6">
+      <main className="">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8 px-4 pt-6">
           <CommonCard
             title="Total Bookings"
             value="27"
