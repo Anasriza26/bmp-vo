@@ -1,12 +1,12 @@
 import { MapPin, Star } from "lucide-react";
 
-const FacilityInfo = () => (
+const FacilityInfo = ({name,location,rating} : {name:string,location:string,rating:number}) => (
   <div className="flex items-start justify-between mb-4">
     <div>
-      <h1 className="text-3xl font-bold text-green-600 mb-2">Futsal Prime - FD</h1>
+      <h1 className="text-3xl font-bold text-green-600 mb-2">{name}</h1>
       <div className="flex items-center text-gray-600 mb-3">
         <MapPin className="h-5 w-5 mr-2" />
-        <span>Puttalam, Sri Lanka</span>
+        <span>{location}</span>
       </div>
       <div className="flex items-center">
         <div className="flex items-center mr-3">
@@ -17,7 +17,7 @@ const FacilityInfo = () => (
             />
           ))}
         </div>
-        <span className="text-lg font-semibold text-gray-900">4.5</span>
+        <span className="text-lg font-semibold text-gray-900">{rating}</span>
       </div>
     </div>
   </div>
