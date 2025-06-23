@@ -3,9 +3,8 @@ import FacilityInfo from "@/components/groundDetails/FacilityInfo";
 import Amenities from "@/components/groundDetails/Amenities";
 import Description from "@/components/groundDetails/Description";
 import Reviews from "@/components/groundDetails/Reviews";
-import BookingSidebar from "@/components/groundDetails/BookingSidebar";
-import QuickInfo from "@/components/groundDetails/QuickInfo";
 import { Users, Droplets, Car, Eye, Heart } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 // dummy data moved to page level
 const GroundDetails = () => {
@@ -30,23 +29,21 @@ const GroundDetails = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <div className="max-w-7xl mx-auto px-4 py-8">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          <div className="lg:col-span-2 space-y-6">
-            <HeroImage />
-            <div className="bg-white rounded-xl p-6 shadow-sm space-y-6">
-              <FacilityInfo />
-              <Amenities amenities={amenities} />
-              <Description />
-            </div>
-            <div className="bg-white rounded-xl p-6 shadow-sm">
-              <Reviews reviews={reviews} />
-            </div>
+      <div className="max-w-3xl mx-auto px-4 py-8">
+        <div className="space-y-6">
+          <HeroImage />
+
+          <div className="bg-white rounded-xl p-6 shadow-sm space-y-6">
+            <FacilityInfo />
+            <Amenities amenities={amenities} />
+            <Description />
           </div>
-          <div className="lg:col-span-1 sticky top-8 space-y-6">
-            <BookingSidebar />
-            <QuickInfo />
+          <div className="bg-white rounded-xl p-6 shadow-sm">
+            <Reviews reviews={reviews} />
           </div>
+          <Button className="w-full bg-green-600 text-white py-3 text-lg">
+            Book Slots
+          </Button>
         </div>
       </div>
     </div>
