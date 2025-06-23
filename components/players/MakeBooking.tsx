@@ -21,38 +21,34 @@ const MakeBooking = () => {
   };
   return (
     <div className="min-h-screen bg-gray-50">
-      <div className="max-w-7xl mx-auto px-6 py-8">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          <div className="lg:col-span-2">
-            <BookingHeader
-              facilityName="Futsal Prime - FD"
-              location="Puttalam, Sri Lanka"
-              rating={4.5}
-              reviews={127}
-            />
+      <div className="max-w-2xl mx-auto px-6 py-8">
+        <BookingHeader
+          facilityName="Futsal Prime - FD"
+          location="Puttalam, Sri Lanka"
+          rating={4.5}
+          reviews={127}
+        />
 
-            <FacilityImage />
+        <FacilityImage />
 
-            <DateSelector
-              selectedDate={selectedDate}
-              onDateSelect={handleDateSelect}
-            />
+        <DateSelector
+          selectedDate={selectedDate}
+          onDateSelect={handleDateSelect}
+        />
 
-            <TimeSlotGrid
-              selectedSlots={selectedSlots}
-              onSlotSelect={handleSlotSelect}
-            />
-          </div>
+        <TimeSlotGrid
+          selectedSlots={selectedSlots}
+          onSlotSelect={handleSlotSelect}
+        />
 
-          <div className="lg:col-span-1">
-            <BookingSummary
-              selectedDate={selectedDate}
-              selectedSlots={selectedSlots}
-              facilityName="Futsal Prime - FD"
-              location="Puttalam, Sri Lanka"
-              pricePerHour={25}
-            />
-          </div>
+        <div className="mt-8">
+          <BookingSummary
+            selectedDate={selectedDate}
+            selectedSlots={selectedSlots}
+            facilityName="Futsal Prime - FD"
+            location="Puttalam, Sri Lanka"
+            pricePerHour={25}
+          />
         </div>
       </div>
     </div>
