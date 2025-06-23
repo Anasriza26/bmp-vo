@@ -140,7 +140,7 @@ export function BookingsPage() {
   const totalPages = 10
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col w-full">
       {/* Header */}
       <CommonHeader
         title="Manage Bookings"
@@ -148,9 +148,9 @@ export function BookingsPage() {
       />
 
       {/* Main Content */}
-      <main className="flex-1 p-6">
+      <main className="flex-1 p-6 w-full">
         {/* Filters and Search */}
-        <div className="flex flex-col sm:flex-row gap-4 mb-6">
+        <div className="flex flex-col sm:flex-row gap-4 mb-6 w-full">
           <div className="relative flex-1">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
             <Input
