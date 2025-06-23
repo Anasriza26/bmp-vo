@@ -5,9 +5,20 @@ import Description from "@/components/groundDetails/Description";
 import Reviews from "@/components/groundDetails/Reviews";
 import { Users, Droplets, Car, Eye, Heart } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { venues } from "@/constants/data";
+import { notFound } from "next/navigation";
 
 // dummy data moved to page level
-const GroundDetails = () => {
+const GroundDetails = ({ id }: { id: number }) => {
+  console.log("GroundDetails data:", id);
+
+  const venue = venues.find((venue) => venue.id === Number(id));
+  console.log(venue ? "Venue found:" : "Venue not found for ID:", venue || id);
+
+  if (!venue) {
+    return notFound();
+  }
+
   const amenities = [
     { icon: Users, label: "5 Futsal Balls" },
     { icon: Users, label: "Washrooms" },
@@ -27,15 +38,21 @@ const GroundDetails = () => {
     },
   ];
 
+  
+
   return (
     <div className="min-h-screen bg-gray-50">
       <div className="max-w-3xl mx-auto px-4 py-8">
         <div className="space-y-6">
-          <HeroImage />
+          <HeroImage src={venue.image} alt={venue.name} />
 
           <div className="bg-white rounded-xl p-6 shadow-sm space-y-6">
-            <FacilityInfo />
-            <Amenities amenities={amenities} />
+            <FacilityInfo
+              name={venue.name}
+              location={venue.location}
+              rating={venue.rating}
+            />
+            <Amenities amenities={venue.features as any} />
             <Description />
           </div>
           <div className="bg-white rounded-xl p-6 shadow-sm">
