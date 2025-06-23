@@ -6,7 +6,7 @@ interface CommonHeaderProps {
 
 const CommonHeader = ({ title, subtitle }: CommonHeaderProps) => {
   return (<>
-   <header className="bg-white border-b border-gray-200 px-6 py-4">
+   <header className="bg-white border-b border-gray-200 px-6 py-4 w-full">
       <div>
         <h1 className="text-2xl font-semibold text-gray-900">{title}</h1>
         <p className="text-gray-600 mt-1">{subtitle}</p>
