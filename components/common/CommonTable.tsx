@@ -29,7 +29,7 @@ interface CommonTableProps {
 const CommonTable: React.FC<CommonTableProps> = ({ bookingsData, columns }) => {
   return (
     <Card>
-      <CardContent className="p-0">
+      <CardContent className="p-0 w-full">
         <Table>
           <TableHeader>
             <TableRow className="border-b border-gray-200">
