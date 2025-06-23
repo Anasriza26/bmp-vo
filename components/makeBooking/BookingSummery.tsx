@@ -22,36 +22,7 @@ const BookingSummary: React.FC<BookingSummaryProps> = ({
   const finalTotal = totalPrice + serviceFee;
 
   return (
-    <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6 sticky top-8">
-      <h3 className="text-xl font-semibold text-gray-900 mb-6">Booking Summary</h3>
-      
-      <div className="space-y-4 mb-6">
-        <div className="flex items-start gap-3">
-          <MapPin className="w-5 h-5 text-gray-400 mt-0.5" />
-          <div>
-            <div className="font-medium text-gray-900">{facilityName}</div>
-            <div className="text-sm text-gray-600">{location}</div>
-          </div>
-        </div>
-        
-        <div className="flex items-center gap-3">
-          <Calendar className="w-5 h-5 text-gray-400" />
-          <div className="text-gray-900">March {selectedDate}, 2024</div>
-        </div>
-        
-        {selectedSlots.length > 0 && (
-          <div className="flex items-start gap-3">
-            <Clock className="w-5 h-5 text-gray-400 mt-0.5" />
-            <div>
-              <div className="text-gray-900 font-medium">Time Slots</div>
-              <div className="text-sm text-gray-600">
-                {selectedSlots.join(', ')}
-              </div>
-            </div>
-          </div>
-        )}
-      </div>
-
+    <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
       {selectedSlots.length > 0 && (
         <>
           <div className="border-t border-gray-100 pt-4 mb-4">
