@@ -11,7 +11,7 @@ interface Venue {
   image: string;
   sport: string;
   capacity: string;
-  features: string[];
+  features: any[]; // string or { label: string }
 }
 
 interface Props {
