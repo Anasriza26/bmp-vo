@@ -232,7 +232,7 @@ const BankDetails = () => {
               </div>
             </div>
             <div>
-              <Link href="/otp"><button
+              <Link href="/onboarding-otp"><button
                 type="button"
                 className="w-full border border-gray-300 rounded-md py-2 text-white bg-btncolor"
               >
