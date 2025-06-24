@@ -1,5 +1,5 @@
 "use client";
-
+import Link from "next/link";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -127,10 +127,7 @@ const Profile = () => {
                 <div className="space-y-6 md:pl-6">
                   <div className="flex justify-center md:justify-start">
                     <Avatar className="h-16 w-16">
-                      <AvatarImage
-                        src="/User.jpg"
-                        alt="Profile photo"
-                      />
+                      <AvatarImage src="/User.jpg" alt="Profile photo" />
                       <AvatarFallback>
                         <User className="h-8 w-8" />
                       </AvatarFallback>
@@ -156,17 +153,20 @@ const Profile = () => {
               </div>
 
               {/* Action Buttons */}
-              <div className="flex flex-col-reverse sm:flex-row gap-3 pt-6 border-t border-gray-100">
-                <Button
-                  variant="outline"
-                  className="flex-1 sm:flex-none h-11 bg-white text-gray-700 border-gray-200 hover:bg-gray-50"
-                >
-                  Cancel
-                </Button>
-                <Button className="flex-1 sm:flex-none h-11 bg-green-600 hover:bg-green-700 text-white">
-                  Save changes
-                </Button>
-              </div>
+              <Link href={"/home"}>
+                <div className="flex flex-col-reverse sm:flex-row gap-3 pt-6 border-t border-gray-100">
+                  <Button
+                    variant="outline"
+                    className="flex-1 sm:flex-none h-11 bg-white text-gray-700 border-gray-200 hover:bg-gray-50"
+                  >
+                    Cancel
+                  </Button>
+
+                  <Button className="flex-1 sm:flex-none h-11 bg-green-600 hover:bg-green-700 text-white">
+                    Save changes
+                  </Button>
+                </div>
+              </Link>
             </CardContent>
           </Card>
         </div>
