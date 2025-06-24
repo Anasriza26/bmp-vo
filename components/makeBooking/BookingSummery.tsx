@@ -44,7 +44,7 @@ const BookingSummary: React.FC<BookingSummaryProps> = ({
           <div className="border-t border-gray-100 pt-4 mb-6">
             <div className="flex justify-between items-center">
               <span className="text-lg font-semibold text-gray-900">Total</span>
-              <span className="text-2xl font-bold text-green-600">
+              <span className="text-2xl font-semibold text-green-600">
                 ${finalTotal}
               </span>
             </div>
