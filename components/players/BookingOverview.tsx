@@ -5,6 +5,7 @@ import { MapPin, Star, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
+import Link from "next/link";
 
 interface BookingSlot {
   id: string;
@@ -142,15 +143,17 @@ const BookingOverview = () => {
 
           {/* Payment Button */}
           <div className="sticky bottom-4 md:static">
-            <Button
-              className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 md:py-4 text-base md:text-lg font-semibold rounded-lg"
-              disabled={!agreedToTerms || bookingSlots.length === 0}
-            >
-              <div className="flex items-center justify-center space-x-2">
-                <span>Pay with</span>
-                <span className="font-bold">PayHere</span>
-              </div>
-            </Button>
+            <Link href="/payment-success">
+              <Button
+                className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 md:py-4 text-base md:text-lg font-semibold rounded-lg"
+                disabled={!agreedToTerms || bookingSlots.length === 0}
+              >
+                <div className="flex items-center justify-center space-x-2">
+                  <span>Pay with</span>
+                  <span className="font-bold">PayHere</span>
+                </div>
+              </Button>
+            </Link>
           </div>
         </div>
       </div>
