@@ -13,11 +13,17 @@ const Header = ({ searchTerm, setSearchTerm }: HeaderProps) => {
     <header className="bg-white shadow-lg sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 md:h-20">
-          <div className="flex items-center space-x-4">
-            <Image src="/BMP-Logo.jpg" alt="Logo" width={126} height={40} className="w-[126px] h-[40px]" />
-            <div className="hidden md:flex items-center text-gray-600">
-              <MapPin className="w-5 h-5 mr-2" />
-              <span className="text-sm">Puttalam, Sri Lanka</span>
+          <div className="flex flex-col md:flex-row md:items-center md:space-x-4">
+            <Image
+              src="/BMP-Logo.jpg"
+              alt="Logo"
+              width={126}
+              height={40}
+              className="w-[126px] h-[40px]"
+            />
+            <div className="flex items-center justify-center md:justify-start text-gray-600 mt-1 md:mt-0">
+              <MapPin className="w-4 h-4 md:w-5 md:h-5 mr-1 md:mr-2" />
+              <span className="text-xs md:text-sm">Puttalam, Sri Lanka</span>
             </div>
           </div>
           <div className="hidden md:flex flex-1 max-w-2xl mx-8">
