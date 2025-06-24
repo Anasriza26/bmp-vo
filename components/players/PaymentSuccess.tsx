@@ -3,7 +3,7 @@
 import { Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
-
+import Link from "next/link";
 const PaymentSuccess = () => {
   const handleGoToBookings = () => {
     // Navigation logic would go here
@@ -49,13 +49,15 @@ const PaymentSuccess = () => {
 
             {/* Action Button */}
             <div className="w-full">
-              <Button
-                onClick={handleGoToBookings}
-                variant="outline"
-                className="w-full h-12 md:h-14 text-green-600 border-green-600 hover:bg-green-50 hover:border-green-700 hover:text-green-700 font-medium text-base md:text-lg transition-colors duration-200"
-              >
-                Go To My Bookings
-              </Button>
+              <Link href={"/check-booking"}>
+                <Button
+                  onClick={handleGoToBookings}
+                  variant="outline"
+                  className="w-full h-12 md:h-14 text-green-600 border-green-600 hover:bg-green-50 hover:border-green-700 hover:text-green-700 font-medium text-base md:text-lg transition-colors duration-200"
+                >
+                  Go To My Bookings
+                </Button>
+              </Link>
             </div>
           </div>
         </main>
