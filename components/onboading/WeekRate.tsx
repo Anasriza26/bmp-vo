@@ -56,7 +56,7 @@ const Weekrate = () => {
               </div>
             </div>
             <div>
-              <Link href="/paymentdetails"><button
+              <Link href="/payment-details"><button
                 type="button"
                 className="w-full border border-gray-300 rounded-md py-2 text-white bg-btncolor"
               >
