@@ -2,12 +2,16 @@ import React from 'react'
 import Image from 'next/image'
 import Logo from "@/public/BMP-Logo.jpg";
 import SuccessImg from "@/components/assets/Success.jpg";
+import Link from 'next/link';
 
 const complete = () => {
   return (<>
   <main>
     <div className="mt-[60px] ml-[60px]">
-          <Image src={Logo} alt="Owner Details" width={133} height={42} />
+      <Link href={"/on-boarding"} className="flex items-center">
+      <Image src={Logo} alt="Owner Details" width={133} height={42} />
+      </Link>
+          
         </div>
 
         <div className="flex flex-col items-center justify-center min-h-screen px-4 text-center">
