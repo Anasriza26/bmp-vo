@@ -29,7 +29,7 @@ export default function DateSelector({ selectedDate, setSelectedDate }: any) {
           <div className="text-xs font-medium mb-1 xs:text-[10px] sm:text-[10px]">
             TODAY
           </div>
-          <div className="text-2xl font-bold xs:text-base sm:text-lg">22</div>
+          <div className="text-2xl font-semibold xs:text-base sm:text-lg">22</div>
         </button>
         {dates.map((date) => (
           <button
@@ -44,7 +44,7 @@ export default function DateSelector({ selectedDate, setSelectedDate }: any) {
             <div className="text-xs font-medium mb-1 xs:text-[10px]">
               {date.day}
             </div>
-            <div className="text-lg font-bold xs:text-base">{date.date}</div>
+            <div className="text-lg font-semibold xs:text-base">{date.date}</div>
           </button>
         ))}
       </div>
