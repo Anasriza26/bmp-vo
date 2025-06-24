@@ -17,7 +17,7 @@ interface Props {
 const SportsFilter = ({ selectedSport, setSelectedSport }: Props) => {
   return (
     <div className="mb-8">
-      <h2 className="text-2xl font-bold text-gray-900 mb-6 px-4 md:px-0">Choose Your Sport</h2>
+      <h2 className="text-2xl font-semibold text-gray-900 mb-6 px-4 md:px-0">Choose Your Sport</h2>
       
       {/* Mobile - Horizontal Slider */}
       <div className="md:hidden flex overflow-x-auto no-scrollbar pb-4 px-4 space-x-4">
