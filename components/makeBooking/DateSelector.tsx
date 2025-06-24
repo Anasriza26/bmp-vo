@@ -50,7 +50,7 @@ const DateSelector: React.FC<DateSelectorProps> = ({ selectedDate, onDateSelect 
               <div className="text-xs font-medium mb-1">
                 {dateItem.day === 'TODAY' ? 'TODAY' : dateItem.dayName}
               </div>
-              <div className="text-lg md:text-xl font-bold">{dateItem.date}</div>
+              <div className="text-lg md:text-xl font-semibold">{dateItem.date}</div>
             </button>
           ))}
         </div>
