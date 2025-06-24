@@ -164,7 +164,7 @@ const Timeslot = () => {
               </div>
             </div>
             <div>
-              <Link href="/weekrate"><button
+              <Link href="/week-rate"><button
                 type="button"
                 className="w-full border border-gray-300 rounded-md py-2 text-white bg-btncolor"
               >
