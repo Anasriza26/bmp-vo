@@ -18,7 +18,7 @@ const BookingHeader: React.FC<BookingHeaderProps> = ({
     <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-4 sm:p-6 mb-6 sm:mb-8">
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div className="flex-1 w-full">
-          <h1 className="text-2xl sm:text-3xl font-bold text-green-600 mb-1 sm:mb-2">
+          <h1 className="text-2xl sm:text-3xl font-semibold text-green-600 mb-1 sm:mb-2">
             {facilityName}
           </h1>
           <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 mb-3 sm:mb-4">
