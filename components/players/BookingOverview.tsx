@@ -35,7 +35,7 @@ const BookingOverview = () => {
         <div className="mx-auto max-w-2xl">
           {/* Header */}
           <div className="mb-6 md:mb-8">
-            <h1 className="text-2xl md:text-3xl font-bold text-gray-900">
+            <h1 className="text-2xl md:text-3xl font-semibold text-gray-900">
               Booking Overview
             </h1>
           </div>
@@ -113,7 +113,7 @@ const BookingOverview = () => {
 
               <div className="flex justify-between items-center text-lg md:text-xl">
                 <span className="font-semibold text-green-600">Sub Total</span>
-                <span className="font-bold text-green-600">
+                <span className="font-semibold text-green-600">
                   LKR {subtotal.toFixed(2)}
                 </span>
               </div>
@@ -150,7 +150,7 @@ const BookingOverview = () => {
               >
                 <div className="flex items-center justify-center space-x-2">
                   <span>Pay with</span>
-                  <span className="font-bold">PayHere</span>
+                  <span className="font-semibold">PayHere</span>
                 </div>
               </Button>
             </Link>
