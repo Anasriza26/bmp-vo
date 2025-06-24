@@ -47,7 +47,7 @@ const SportsFilter = ({ selectedSport, setSelectedSport }: Props) => {
       </div>
 
       {/* Desktop - Normal Grid */}
-      <div className="hidden md:flex flex-wrap gap-4 md:gap-6">
+      <div className="hidden md:flex flex-wrap gap-4 md:gap-6 mx-auto justify-center">
         {sports.map((sport) => (
           <button
             key={sport.name}
