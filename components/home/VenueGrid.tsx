@@ -22,7 +22,7 @@ interface Props {
 const VenueGrid = ({ venues, selectedSport }: Props) => (
   <div className="mb-8">
     <div className="flex items-center justify-between mb-6">
-      <h2 className="text-2xl font-bold text-gray-900">
+      <h2 className="text-2xl font-semibold text-gray-900">
         {selectedSport === "All" ? "All Venues" : `${selectedSport} Venues`}
       </h2>
       <span className="text-gray-600">{venues.length} venues found</span>
