@@ -1,5 +1,6 @@
-import React from 'react';
-import { Calendar, Clock, MapPin, DollarSign } from 'lucide-react';
+import React from "react";
+import Link from "next/link";
+import { Calendar, Clock, MapPin, DollarSign } from "lucide-react";
 
 interface BookingSummaryProps {
   selectedDate: string;
@@ -14,7 +15,7 @@ const BookingSummary: React.FC<BookingSummaryProps> = ({
   selectedSlots,
   facilityName,
   location,
-  pricePerHour
+  pricePerHour,
 }) => {
   const totalHours = selectedSlots.length;
   const totalPrice = totalHours * pricePerHour;
@@ -28,7 +29,9 @@ const BookingSummary: React.FC<BookingSummaryProps> = ({
           <div className="border-t border-gray-100 pt-4 mb-4">
             <div className="space-y-2">
               <div className="flex justify-between text-gray-600">
-                <span>{totalHours} hour{totalHours > 1 ? 's' : ''} × ${pricePerHour}</span>
+                <span>
+                  {totalHours} hour{totalHours > 1 ? "s" : ""} × ${pricePerHour}
+                </span>
                 <span>${totalPrice}</span>
               </div>
               <div className="flex justify-between text-gray-600">
@@ -37,11 +40,13 @@ const BookingSummary: React.FC<BookingSummaryProps> = ({
               </div>
             </div>
           </div>
-          
+
           <div className="border-t border-gray-100 pt-4 mb-6">
             <div className="flex justify-between items-center">
               <span className="text-lg font-semibold text-gray-900">Total</span>
-              <span className="text-2xl font-bold text-green-600">${finalTotal}</span>
+              <span className="text-2xl font-bold text-green-600">
+                ${finalTotal}
+              </span>
             </div>
           </div>
         </>
@@ -51,13 +56,17 @@ const BookingSummary: React.FC<BookingSummaryProps> = ({
         disabled={selectedSlots.length === 0}
         className={`w-full py-4 px-6 rounded-xl font-semibold text-white transition-all duration-200 ${
           selectedSlots.length === 0
-            ? 'bg-gray-300 cursor-not-allowed'
-            : 'bg-green-500 hover:bg-green-600 hover:shadow-lg hover:shadow-green-500/25 active:scale-95'
+            ? "bg-gray-300 cursor-not-allowed"
+            : "bg-green-500 hover:bg-green-600 hover:shadow-lg hover:shadow-green-500/25 active:scale-95"
         }`}
       >
-        {selectedSlots.length === 0 ? 'Select Time Slots' : 'Proceed to Checkout'}
+        <Link href="/booking-overview">
+          {selectedSlots.length === 0
+            ? "Select Time Slots"
+            : "Proceed to Checkout"}
+        </Link>
       </button>
-      
+
       <p className="text-xs text-gray-500 text-center mt-3">
         You won't be charged until your booking is confirmed
       </p>
