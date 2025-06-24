@@ -33,7 +33,7 @@ const CommonCard = ({
           </Button>
         </CardHeader>
         <CardContent>
-          <div className={`text-3xl font-bold ${valueColor}`}>{value}</div>
+          <div className={`text-3xl font-semibold ${valueColor}`}>{value}</div>
           {subtitle && (
             <div className={`flex items-center text-sm mt-2 ${subtitleColor}`}>
               {SubtitleIcon && <SubtitleIcon className="w-4 h-4 mr-1" />}
