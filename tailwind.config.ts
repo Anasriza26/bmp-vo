@@ -12,6 +12,7 @@ const config: Config = {
   	extend: {
   		colors: {
   			background: 'hsl(var(--background))',
+			btncolor: '#25A359',
   			foreground: 'hsl(var(--foreground))',
   			card: {
   				DEFAULT: 'hsl(var(--card))',
