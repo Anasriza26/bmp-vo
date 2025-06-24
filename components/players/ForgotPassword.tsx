@@ -134,12 +134,14 @@ const ForgotPassword = () => {
               </p>
 
               <div className="space-y-3">
+                <Link href={"/reset-password"}>
                 <Button
                   onClick={handleVerify}
                   className="w-full h-12 bg-green-500 hover:bg-green-600 text-white font-medium rounded-lg"
                 >
                   Verify
                 </Button>
+                </Link>
                 <Button
                   onClick={handleCancel}
                   variant="outline"
