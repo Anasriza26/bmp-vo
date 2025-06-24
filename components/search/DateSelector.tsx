@@ -13,9 +13,9 @@ const dates = [
 export default function DateSelector({ selectedDate, setSelectedDate }: any) {
   return (
     <div>
-      <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
-        <Calendar className="w-5 h-5" />
+      <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center justify-between">
         Select your date
+        <Calendar className="w-5 h-5 " />
       </h3>
       <div className="grid grid-cols-4 gap-3 sm:grid-cols-4 xs:grid-cols-3 xs:gap-2">
         <button
@@ -37,7 +37,7 @@ export default function DateSelector({ selectedDate, setSelectedDate }: any) {
             onClick={() => setSelectedDate(date.date)}
             className={`p-3 rounded-xl border-2 ${
               selectedDate === date.date
-                ? "border-green-500 bg-green-50 text-green-700"
+                ? "border-green-500 bg-green-500 text-white"
                 : "border-gray-200 bg-white text-gray-600 hover:border-gray-300"
             } xs:p-2`}
           >
