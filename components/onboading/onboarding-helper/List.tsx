@@ -290,7 +290,7 @@ const List: React.FC = () => {
             </div>
           </div>
           <div>
-            <Link href="/ownerdocumentation"> 
+            <Link href="/owner-documentation"> 
               <button
                 type="button"
                 className="w-full border border-gray-300 rounded-md py-2 text-white bg-btncolor"
