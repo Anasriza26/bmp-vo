@@ -37,7 +37,7 @@ const PaymentSuccess = () => {
 
             {/* Success Message */}
             <div className="mb-8 md:mb-12">
-              <h2 className="text-2xl md:text-3xl font-bold text-green-600 mb-4 md:mb-6">
+              <h2 className="text-2xl md:text-3xl font-semibold text-green-600 mb-4 md:mb-6">
                 Payment Successful
               </h2>
               <p className="text-gray-600 text-base md:text-lg leading-relaxed">
