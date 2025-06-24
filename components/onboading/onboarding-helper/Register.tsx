@@ -119,7 +119,7 @@ export default function Register() {
           </div>
 
           <div className="relative">
-            <Link href="/turfdetails"><button className="w-full pl-10 pr-4 py-2 border-spacing-1 bg-btncolor text-white rounded-lg  cursor-pointer font-semibold">Proceed to next</button></Link>
+            <Link href="/turf-details"><button className="w-full pl-10 pr-4 py-2 border-spacing-1 bg-btncolor text-white rounded-lg  cursor-pointer font-semibold">Proceed to next</button></Link>
           </div>
         </form>
       </div>
