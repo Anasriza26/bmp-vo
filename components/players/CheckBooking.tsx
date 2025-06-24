@@ -112,9 +112,11 @@ const CheckBooking = () => {
           {/* Header */}
           <div className="flex justify-between items-start mb-6 md:mb-8">
             <div className="flex-1">
-              <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-2">
-                My Bookings
-              </h1>
+              <Link href={"/home"}>
+                <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-2">
+                  My Bookings
+                </h1>
+              </Link>
               <p className="text-gray-600 text-sm md:text-base">
                 Your bookings will be shown here
               </p>
