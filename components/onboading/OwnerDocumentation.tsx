@@ -188,7 +188,7 @@ const ownerdocumentation = () => {
               </div>
             </div>
             <div>
-              <Link href="/timeslot"><button
+              <Link href="/time-slot"><button
                 type="button"
                 className="w-full border border-gray-300 rounded-md py-2 text-white bg-btncolor"
               >
