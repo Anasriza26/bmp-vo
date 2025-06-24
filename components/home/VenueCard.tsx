@@ -68,7 +68,7 @@ const VenueCard = ({ venue }: { venue: Venue }) => (
           </div>
         </div>
         <Link href={`/ground-details/${venue.id}`}>
-          <button className="flex-col  w-full sm:w-auto bg-[#25A359] text-white px-4 py-2 sm:px-6 sm:py-3 rounded-lg md:rounded-xl font-medium hover:from-teal-600 hover:to-green-600 transition-all duration-200 hover:scale-105 shadow-md md:shadow-lg text-sm sm:text-base">
+          <button className="flex-col w-full sm:w-full bg-[#25A359] text-white px-4 py-2 sm:px-4 sm:py-2 rounded-lg md:rounded-xl font-medium hover:from-teal-600 hover:to-green-600 transition-all duration-200 hover:scale-105 shadow-md md:shadow-lg text-sm sm:text-base whitespace-nowrap">
             Book Slots
           </button>
         </Link>
