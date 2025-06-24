@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { MapPin, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 import { Card, CardContent } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
@@ -118,13 +119,12 @@ const CheckBooking = () => {
                 Your bookings will be shown here
               </p>
             </div>
-            <Avatar className="w-12 h-12 md:w-14 md:h-14 lg:w-16 lg:h-16">
-              <AvatarImage
-                src="/User.jpg"
-                alt="Profile"
-              />
-              <AvatarFallback>AR</AvatarFallback>
-            </Avatar>
+            <Link href={"/player-profile"}>
+              <Avatar className="w-12 h-12 md:w-14 md:h-14 lg:w-16 lg:h-16">
+                <AvatarImage src="/User.jpg" alt="Profile" />
+                <AvatarFallback>AR</AvatarFallback>
+              </Avatar>
+            </Link>
           </div>
 
           {/* Status Tabs */}
