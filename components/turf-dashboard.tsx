@@ -122,7 +122,7 @@ export default function DashboardPage() {
                     }`}
                   >
                     <span className="text-xs font-medium">{day.day}</span>
-                    <span className="text-lg font-bold">{day.date}</span>
+                    <span className="text-lg font-semibold">{day.date}</span>
                   </div>
                 ))}
               </div>
