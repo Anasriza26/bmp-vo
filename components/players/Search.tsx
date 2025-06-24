@@ -10,14 +10,14 @@ import LocationSelector from "../search/LocationSelector";
 import ActionButtons from "../search/ActionButtons";
 
 const Search = () => {
-  const [selectedSport, setSelectedSport] = useState("soccer");
+  const [selectedSport, setSelectedSport] = useState("");
   const [selectedDate, setSelectedDate] = useState(22);
   const [startTime, setStartTime] = useState("08:00 PM");
   const [endTime, setEndTime] = useState("10:00 PM");
   const [location, setLocation] = useState("Colombo");
 
   return (
-    <div className="min-h-screen bg-inherit p-6">
+    <div className="min-h-screen bg-inherit">
       <div className="max-w-4xl mx-auto">
         <CommonHeader
           title="Plan your play"
@@ -29,7 +29,7 @@ const Search = () => {
             selectedSport={selectedSport}
             setSelectedSport={setSelectedSport}
           />
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div className="grid gap-8">
             <TimeSelector
               startTime={startTime}
               setStartTime={setStartTime}
