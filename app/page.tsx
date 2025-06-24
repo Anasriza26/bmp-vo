@@ -63,7 +63,7 @@ export default function Home() {
             </div>
 
             <div className="mb-3 sm:mb-4">
-              <Link href="/onboarding">
+              <Link href="/on-boarding">
                 <button
                   type="submit"
                   className="w-full bg-btncolor text-white py-2 rounded-[8px] mb-3 sm:mb-4 font-semibold text-base"
