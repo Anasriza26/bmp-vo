@@ -97,7 +97,7 @@ export default function Home() {
         </div>
 
         {/* cookies text moved outside, centered at bottom */}
-        <div className="absolute bottom-2 sm:bottom-4 left-1/2 -translate-x-1/2 text-center text-[10px] sm:text-xs text-gray-500 w-[95vw] max-w-lg font-inter font-bold leading-tight tracking-normal px-1 sm:px-2">
+        <div className="absolute bottom-2 sm:bottom-4 left-1/2 -translate-x-1/2 text-center text-[10px] sm:text-xs text-gray-500 w-[95vw] max-w-lg font-inter font-semibold leading-tight tracking-normal px-1 sm:px-2">
           <p>
             BookMyPlay uses cookies for analytics personalized content and ads.
             <br />
