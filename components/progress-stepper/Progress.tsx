@@ -35,7 +35,7 @@ const ProgressStepper: React.FC<ProgressStepperProps> = ({
 
               {/* Circle */}
               <div
-                className={`flex items-center justify-center rounded-full border-2 w-10 h-10 text-sm font-bold z-10 ${
+                className={`flex items-center justify-center rounded-full border-2 w-10 h-10 text-sm font-semibold z-10 ${
                   isCompleted
                     ? "bg-green-600 border-green-600 text-white"
                     : isActive
