@@ -25,7 +25,7 @@ const SignIn = () => {
     // Basic validation for the dummy data
     if (email === dummyEmail && password === dummyPassword) {
       // Redirect to the home page on successful login
-      router.push("/home");
+      router.push("/otp");
     } else {
       // Show error message on failure
       setErrorMessage("Invalid email or password. Please try again.");
