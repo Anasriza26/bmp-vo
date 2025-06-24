@@ -4,6 +4,7 @@ import Amenities from "@/components/groundDetails/Amenities";
 import Description from "@/components/groundDetails/Description";
 import Reviews from "@/components/groundDetails/Reviews";
 import { Users, Droplets, Car, Eye, Heart } from "lucide-react";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { venues } from "@/constants/data";
 import { notFound } from "next/navigation";
@@ -58,9 +59,12 @@ const GroundDetails = ({ id }: { id: number }) => {
           <div className="bg-white rounded-xl p-6 shadow-sm">
             <Reviews reviews={reviews} />
           </div>
-          <Button className="w-full bg-green-600 text-white py-3 text-lg">
-            Book Slots
-          </Button>
+
+          <Link href={`/make-booking`} className="block">
+            <Button className="w-full bg-green-600 text-white py-3 text-lg">
+              Book Slots
+            </Button>
+          </Link>
         </div>
       </div>
     </div>
