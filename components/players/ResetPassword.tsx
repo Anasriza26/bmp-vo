@@ -91,12 +91,11 @@ const ResetPassword = () => {
             </div>
 
             {/* Submit Button */}
-            <Button
-              type="submit"
-              className="w-full h-12 bg-green-500 hover:bg-green-600 text-white font-medium rounded-lg"
-            >
-              Reset Password
-            </Button>
+            <Link href={"/otp"}>
+              <Button className="w-full h-12 bg-green-500 hover:bg-green-600 text-white font-medium rounded-lg">
+                Reset Password
+              </Button>
+            </Link>
           </form>
 
           {/* Footer */}
