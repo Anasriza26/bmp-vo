@@ -6,7 +6,7 @@ const BookingSidebar = () => (
   <Card className="shadow-lg">
     <CardContent className="p-6">
       <div className="text-center mb-6">
-        <div className="text-3xl font-bold text-green-600 mb-2">$25/hour</div>
+        <div className="text-3xl font-semibold text-green-600 mb-2">$25/hour</div>
         <Badge variant="secondary" className="bg-green-100 text-green-800">Available Today</Badge>
       </div>
       <div className="space-y-4 mb-6">
