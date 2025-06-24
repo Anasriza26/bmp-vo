@@ -25,7 +25,7 @@ const ResetPassword = () => {
 
           {/* Header */}
           <div className="mb-8 mt-8">
-            <h1 className="text-2xl font-bold text-gray-900 mb-2">
+            <h1 className="text-2xl font-semibold text-gray-900 mb-2">
               Reset Password
             </h1>
             <p className="text-gray-600">Enter you new password</p>
