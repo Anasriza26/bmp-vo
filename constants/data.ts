@@ -1,12 +1,11 @@
 import { Car, Droplets, Eye, Users } from "lucide-react";
 
 export const sports = [
-  { name: "Soccer", icon: "⚽" },
-  { name: "Cricket", icon: "🏏" },
-  { name: "Badminton", icon: "🏸" },
-  { name: "Volleyball", icon: "🏐" },
-  { name: "Netball", icon: "🏀" },
-  { name: "Tennis", icon: "🎾" },
+  { name: "Soccer", icon: "/assets/icons/SoccerBall.svg" },
+  { name: "Cricket", icon: "/assets/icons/cricket.svg" },
+  { name: "Badminton", icon: "/assets/icons/badminton.svg" },
+  { name: "Volleyball", icon: "/assets/icons/volleyball.svg" },
+  { name: "Netball", icon: "/assets/icons/basketball.svg" },
 ];
 
 export const venues = [
@@ -92,7 +91,7 @@ export const venues = [
   },
   {
     id: 6,
-    name: " huvuv",
+    name: "Kandy Tennis Club",
     location: "Kandy, Sri Lanka",
     rating: 4.7,
     price: 2800,
