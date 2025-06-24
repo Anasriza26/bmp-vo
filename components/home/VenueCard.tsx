@@ -29,7 +29,7 @@ const VenueCard = ({ venue }: { venue: Venue }) => (
       </div>
     </div>
     <div className="p-4 sm:p-5 md:p-6">
-      <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-1 sm:mb-2 line-clamp-1">
+      <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-1 sm:mb-2 line-clamp-1">
         {venue.name}
       </h3>
 
@@ -64,7 +64,7 @@ const VenueCard = ({ venue }: { venue: Venue }) => (
         <div className="w-full sm:w-auto">
           <span className="text-xs sm:text-sm text-gray-500">Starts from</span>
           <div className="flex items-center">
-            <span className="text-xl sm:text-2xl font-bold text-gray-900">
+            <span className="text-xl sm:text-2xl font-semibold text-gray-900">
               LKR {venue.price.toLocaleString()}
             </span>
             <span className="text-gray-500 text-xs sm:text-sm ml-1">/Hr</span>
