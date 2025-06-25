@@ -43,11 +43,11 @@ const GroundDetails = ({ id }: { id: number }) => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <div className="max-w-3xl mx-auto px-4 py-8">
+      <div className="max-w-3xl mx-auto  py-8">
         <div className="space-y-6">
           <HeroImage src={venue.image} alt={venue.name} />
 
-          <div className="bg-white rounded-xl p-6 shadow-sm space-y-6">
+          <div className="bg-white p-4 shadow-sm space-y-6">
             <FacilityInfo
               name={venue.name}
               location={venue.location}
