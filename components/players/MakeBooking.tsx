@@ -21,7 +21,10 @@ const MakeBooking = () => {
   };
   return (
     <div className="min-h-screen bg-gray-50">
-      <div className="max-w-2xl mx-auto px-6 py-8">
+      <div className="max-w-2xl mx-auto  py-8">
+
+         <FacilityImage />
+         
         <BookingHeader
           facilityName="Futsal Prime - FD"
           location="Puttalam, Sri Lanka"
@@ -29,7 +32,7 @@ const MakeBooking = () => {
           reviews={127}
         />
 
-        <FacilityImage />
+       
 
         <DateSelector
           selectedDate={selectedDate}
