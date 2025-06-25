@@ -17,37 +17,32 @@ const Search = () => {
   const [location, setLocation] = useState("Colombo");
 
   return (
-    <div className="min-h-screen bg-inherit">
-      <div className="max-w-4xl mx-auto">
-        <CommonHeader
-          title="Plan your play"
-          subtitle="By providing the sport, time and date you will be get the filtered grounds."
-        />
-
-        <CardContent className="space-y-8 mt-4">
+    <div className="mx-auto">
+      <CardContent className="space-y-8 mt-4">
+        <div className=" flex flex-col gap-4 md:flex-row">
           <SportSelector
             selectedSport={selectedSport}
             setSelectedSport={setSelectedSport}
+            className=" "
           />
-          <div className="grid gap-8">
-            <TimeSelector
-              startTime={startTime}
-              setStartTime={setStartTime}
-              endTime={endTime}
-              setEndTime={setEndTime}
-            />
-            <DateSelector
-              selectedDate={selectedDate}
-              setSelectedDate={setSelectedDate}
-            />
-          </div>
-          <LocationSelector
-            location={location}
-            setLocation={setLocation}
+
+          <TimeSelector
+            startTime={startTime}
+            setStartTime={setStartTime}
+            endTime={endTime}
+            setEndTime={setEndTime}
           />
+        </div>
+        <div className=" flex flex-col gap-4 md:flex-row">
+          <DateSelector
+            selectedDate={selectedDate}
+            setSelectedDate={setSelectedDate}
+          />
+
+          <LocationSelector location={location} setLocation={setLocation} />
           <ActionButtons />
-        </CardContent>
-      </div>
+        </div>
+      </CardContent>
     </div>
   );
 };
