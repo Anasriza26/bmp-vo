@@ -17,7 +17,7 @@ export default function SportSelector({
   setSelectedSport,
 }: any) {
   return (
-    <div className="mb-6">
+    <div className="mb-6 w-full">
       <h3 className="text-lg font-semibold text-[#475467] mb-4 px-4 sm:px-0">
         Select your sport
       </h3>
