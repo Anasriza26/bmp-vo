@@ -17,34 +17,34 @@ export default function DateSelector({ selectedDate, setSelectedDate }: any) {
         Select your date
         <Calendar className="w-5 h-5 " />
       </h3>
-      <div className="grid grid-cols-4 gap-3 sm:grid-cols-4 xs:grid-cols-3 xs:gap-2">
+      <div className="grid grid-cols-8 gap-3 sm:grid-cols-8 xs:grid-cols-3 xs:gap-2 ">
         <button
           onClick={() => setSelectedDate(22)}
-          className={`p-3 rounded-xl border-2 ${
+          className={`p-3 rounded-md border-2  ${
             selectedDate === 22
               ? "border-green-500 bg-green-500 text-white"
               : "border-gray-200 bg-white text-gray-600 hover:border-gray-300"
           } xs:p-2`}
         >
-          <div className="text-xs font-medium mb-1 xs:text-[10px] sm:text-[10px]">
+          <div className="text-xs font-medium mb-1 xs:text-[8px] sm:text-[8px]">
             TODAY
           </div>
-          <div className="text-2xl font-semibold xs:text-base sm:text-lg">22</div>
+          <div className="text-xs font-medium xs:text-base sm:text-lg">22</div>
         </button>
         {dates.map((date) => (
           <button
             key={date.date}
             onClick={() => setSelectedDate(date.date)}
-            className={`p-3 rounded-xl border-2 ${
+            className={`p-3 rounded-md border-2 ${
               selectedDate === date.date
                 ? "border-green-500 bg-green-500 text-white"
                 : "border-gray-200 bg-white text-gray-600 hover:border-gray-300"
             } xs:p-2`}
           >
-            <div className="text-xs font-medium mb-1 xs:text-[10px]">
+            <div className="text-xs font-medium mb-1 xs:text-[8px]">
               {date.day}
             </div>
-            <div className="text-lg font-semibold xs:text-base">{date.date}</div>
+            <div className="text-xs font-semibold xs:text-base">{date.date}</div>
           </button>
         ))}
       </div>
