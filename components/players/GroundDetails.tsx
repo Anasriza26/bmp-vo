@@ -33,21 +33,19 @@ const GroundDetails = ({ id }: { id: number }) => {
     {
       id: 1,
       name: "Riza Anas",
-      avatar: "public/User.jpg",
+      avatar: "/User.jpg",
       rating: 4,
       comment: "Great experience worth for the price, Highly recommended.",
     },
   ];
 
-  
-
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-white">
       <div className="max-w-3xl mx-auto  py-8">
         <div className="space-y-6">
           <HeroImage src={venue.image} alt={venue.name} />
 
-          <div className="bg-white p-4 shadow-sm space-y-6">
+          <div className="bg-white px-4  space-y-6">
             <FacilityInfo
               name={venue.name}
               location={venue.location}
@@ -55,13 +53,10 @@ const GroundDetails = ({ id }: { id: number }) => {
             />
             <Amenities amenities={venue.features as any} />
             <Description />
-          </div>
-          <div className="bg-white rounded-xl p-6 shadow-sm">
             <Reviews reviews={reviews} />
           </div>
-
-          <Link href={`/make-booking`} className="block">
-            <Button className="w-full bg-green-600 text-white py-3 text-lg">
+          <Link href={`/make-booking`} className="p-4 block">
+            <Button className=" bg-green-600 text-white  text-lg w-full">
               Book Slots
             </Button>
           </Link>
