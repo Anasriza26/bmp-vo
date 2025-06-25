@@ -11,7 +11,7 @@ import ActionButtons from "../search/ActionButtons";
 
 const Search = () => {
   const [selectedSport, setSelectedSport] = useState("");
-  const [selectedDate, setSelectedDate] = useState(22);
+  const [selectedDate, setSelectedDate] = useState();
   const [startTime, setStartTime] = useState("08:00 PM");
   const [endTime, setEndTime] = useState("10:00 PM");
   const [location, setLocation] = useState("Colombo");
