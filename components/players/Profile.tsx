@@ -125,7 +125,7 @@ const Profile = () => {
 
                 {/* Profile Photo Section */}
                 <div className="space-y-6 md:pl-6">
-                  <div className="flex justify-center md:justify-start">
+                  <div className="flex justify-start md:justify-start">
                     <Avatar className="h-16 w-16">
                       <AvatarImage src="/User.jpg" alt="Profile photo" />
                       <AvatarFallback>
