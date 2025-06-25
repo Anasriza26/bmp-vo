@@ -1,18 +1,20 @@
 "use client";
 
-import { Search, MapPin, Bell } from "lucide-react";
+import { Menu, MapPin, Bell } from "lucide-react";
 import Image from "next/image";
+import SearchBar from "./SearchButton";
+import HomeMenu from "@/components/home/HomeMenu";
+import SearchButton from "./SearchButton";
+import SearchSheet from "./SearchSheet";
 
-interface HeaderProps {
-  searchTerm: string;
-  setSearchTerm: (value: string) => void;
-}
 
-const Header = ({ searchTerm, setSearchTerm }: HeaderProps) => {
+
+const Header = () => {
   return (
-    <header className="bg-white shadow-lg  top-0 z-50">
+    <header className="bg-white shadow-lg top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-        <div className="flex items-center justify-between h-16 md:h-20">
+        <div className="flex h-16 md:h-20 justify-between items-center">
+          {/* Left Section */}
           <div className="flex flex-col items-start">
             <div className="flex items-center justify-center md:justify-start text-gray-600 mb-2">
               <MapPin className="w-4 h-4 md:w-5 md:h-5 mr-1 md:mr-2" />
@@ -26,23 +28,25 @@ const Header = ({ searchTerm, setSearchTerm }: HeaderProps) => {
               className="w-[126px] h-[40px]"
             />
           </div>
-          <div className="hidden md:flex flex-1 max-w-2xl mx-8">
-            <div className="relative w-full">
-              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
-              <input
-                type="text"
-                placeholder="Search venues, sports, or locations..."
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-12 pr-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-teal-500 bg-gray-50"
-              />
-            </div>
-          </div>
+
+          {/* Right Section */}
           <div className="flex items-center space-x-4">
+            {/* Search Bar Moved Here */}
+            <div className="hidden md:block">
+              {/* <SearchButton  /> */}
+              <SearchSheet />
+            </div>
+
+            {/* Bell Icon */}
             <button className="relative p-2 text-gray-600 hover:text-[#25A359] transition-colors">
               <Bell className="w-6 h-6" />
               <span className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full" />
             </button>
+
+            {/* Home Menu */}
+            <div className="hidden md:block">
+              <HomeMenu />
+            </div>
           </div>
         </div>
       </div>
