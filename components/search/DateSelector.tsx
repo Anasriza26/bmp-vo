@@ -3,26 +3,14 @@ import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
 import { Button } from "../ui/button";
 import { Calendar } from "../ui/calendar";
 
-// dummy dates for testing.. 
-
-// const dates = [
-//   { day: "SAT", date: 23 },
-//   { day: "SUN", date: 24 },
-//   { day: "MON", date: 25 },
-//   { day: "TUE", date: 26 },
-//   { day: "WED", date: 27 },
-//   { day: "THU", date: 28 },
-//   { day: "FRI", date: 29 },
-// ];
-
-// Generate dates dynamically for the next 7 days
+// Generate dates dynamically for the next 7 days (no past dates)
 const dates = Array.from({ length: 7 }, (_, i) => {
   const date = new Date();
   date.setDate(date.getDate() + i);
-  const options = { weekday: 'short', day: 'numeric' } as const;
   return {
     day: date.toLocaleDateString('en-US', { weekday: 'short' }),
     date: date.getDate(),
+    fullDate: date.toISOString().split('T')[0], // ISO format
   };
 });
 
@@ -46,22 +34,24 @@ export default function DateSelector({ selectedDate, setSelectedDate }: any) {
               mode="single"
               selected={selectedDate}
               onSelect={setSelectedDate}
+              disabled={(date) => date < new Date(new Date().setHours(0, 0, 0, 0))}
             />
           </PopoverContent>
         </Popover>
       </h3>
-      <div className="grid grid-cols-8  sm:grid-cols-8 xs:grid-cols-3 xs:gap-2 text-center justify-center items-center">
+
+      <div className="grid grid-cols-8 sm:grid-cols-8 xs:grid-cols-3 xs:gap-2 text-center justify-center items-center">
         {dates.map((date) => (
           <button
-            key={date.date}
-            onClick={() => setSelectedDate(date.date)}
+            key={date.fullDate}
+            onClick={() => setSelectedDate(date.fullDate)}
             className={`p-3 rounded-md ${
-              selectedDate === date.date
+              selectedDate === date.fullDate
                 ? "border-green-500 bg-green-500 text-white"
                 : "border-gray-200 bg-white text-gray-600 hover:border-gray-300"
             } xs:p-2`}
           >
-            <div className="text-xs font-semibold  lg:text-lg">{date.day}</div>
+            <div className="text-xs font-semibold lg:text-lg">{date.day}</div>
             <div className="text-xs font-semibold xs:text-lg">{date.date}</div>
           </button>
         ))}
