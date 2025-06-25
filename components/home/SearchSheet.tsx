@@ -21,8 +21,8 @@ const SearchSheet = () => {
         <SheetTrigger>
           <SearchButton />
         </SheetTrigger>
-        <SheetContent side="bottom">
-          <SheetHeader className="max-w-xl mx-auto">
+        <SheetContent side="bottom" className="overflow-y-auto max-h-[90vh]">
+          <SheetHeader className="w-full md:px-6">
             <SheetTitle>Plan your play</SheetTitle>
             <SheetDescription>
               By providing the sport, time and date you will be get the filtered
