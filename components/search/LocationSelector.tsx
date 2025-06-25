@@ -7,10 +7,11 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
+
 export default function LocationSelector({ location, setLocation }: any) {
   return (
-    <div>
-      <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
+    <div className="w-full md:p-4">
+      <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2" >
         <MapPin className="w-5 h-5" />
         Enter your location
       </h3>
@@ -26,6 +27,7 @@ export default function LocationSelector({ location, setLocation }: any) {
           ))}
         </SelectContent>
       </Select>
+
     </div>
   );
 }
