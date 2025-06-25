@@ -32,6 +32,7 @@ const TimeSlotGrid: React.FC<TimeSlotGridProps> = ({ selectedSlots, onSlotSelect
     { time: '9:00', period: 'PM', available: true, selected: false },
     { time: '10:00', period: 'PM', available: true, selected: false },
     { time: '11:00', period: 'PM', available: true, selected: false },
+    { time: '12:00', period: 'PM', available: true, selected: false }
   ];
 
   const getSlotStatus = (slot: TimeSlot) => {
@@ -69,7 +70,7 @@ const TimeSlotGrid: React.FC<TimeSlotGridProps> = ({ selectedSlots, onSlotSelect
           </div>
         </div>
       </div>
-      <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-2 md:gap-3">
+      <div className="grid grid-cols-4 sm:grid-cols-4 md:grid-cols-6 gap-2 md:gap-3">
         {timeSlots.map((slot) => {
           const slotKey = `${slot.time} ${slot.period}`;
           const status = getSlotStatus(slot);
