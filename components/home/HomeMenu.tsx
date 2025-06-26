@@ -23,7 +23,7 @@ const HomeMenu = () => {
         <DropdownMenuTrigger asChild>
           <Button variant="outline">
             {" "}
-            <Menu />{" "}
+            <Menu className="hover:bg-[#25A359] hover:text-white" />{" "}
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent className="w-56" align="start">
