@@ -2,9 +2,11 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { User, Mail, Phone, Lock } from "lucide-react";
 
 export default function Register() {
+  const router = useRouter();
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -111,7 +113,8 @@ export default function Register() {
     if (valid) {
       // Proceed with form submission
       console.log("Form is valid, submitting...", formData);
-      // Add your form submission logic here
+      // Navigate to next page
+      router.push("/turf-details");
     }
   };
 
@@ -271,14 +274,12 @@ export default function Register() {
           </div>
 
           <div className="relative">
-            <Link href={"/turf-details"}>
-              <button
-                type="submit"
-                className="w-full pl-10 pr-4 py-2 border-spacing-1 bg-btncolor text-white rounded-lg cursor-pointer font-semibold"
-              >
-                Proceed to next
-              </button>
-            </Link>
+            <button
+              type="submit"
+              className="w-full pl-10 pr-4 py-2 border-spacing-1 bg-btncolor text-white rounded-lg cursor-pointer font-semibold"
+            >
+              Proceed to next
+            </button>
           </div>
         </form>
       </div>
