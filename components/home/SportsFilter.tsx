@@ -25,10 +25,10 @@ const SportsFilter = ({ selectedSport, setSelectedSport }: Props) => {
           <button
             key={sport.name}
             onClick={() => setSelectedSport(sport.name)}
-            className={`flex-shrink-0 flex flex-col items-center p-4 rounded-2xl min-w-[100px] transition-all duration-200 ${
+            className={`flex-shrink-0 flex flex-col items-center p-4 rounded-2xl min-w-[100px] ${
               selectedSport === sport.name
                 ? "bg-[#25A359] text-white shadow-lg scale-105"
-                : "bg-white text-gray-600 hover:bg-gray-50 hover:scale-105 shadow-md"
+                : "bg-transparent text-gray-600 hover:bg-gray-50 hover:scale-105"
             }`}
           >
             <span className="text-2xl mb-2">
@@ -55,7 +55,7 @@ const SportsFilter = ({ selectedSport, setSelectedSport }: Props) => {
             className={`flex flex-col items-center p-6 rounded-2xl w-[120px] transition-all duration-200 ${
               selectedSport === sport.name
                 ? "bg-[#25A359] text-white shadow-lg scale-105"
-                : "bg-white text-gray-600 hover:bg-gray-50 hover:scale-105 shadow-md"
+                : "bg-white text-gray-600 hover:bg-gray-50"
             }`}
           >
             <span className="text-3xl mb-2">
