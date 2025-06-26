@@ -37,14 +37,14 @@ const groundTypeOptions = ["Grass", "Clay", "Artificial", "Turf", "Hardcourt"];
 
 const List: React.FC = () => {
   const [formData, setFormData] = useState<FormData>({
-    name: "Liverpool Ground",
-    location: "Melwatha",
+    name: "",
+    location: "",
     amenities: "",
     description: "",
     sports: "",
     groundType: "",
-    groundWidth: "10m",
-    groundLength: "10m",
+    groundWidth: "",
+    groundLength: "",
     groundImages: null,
   });
 
@@ -66,6 +66,21 @@ const List: React.FC = () => {
     alert(JSON.stringify(formData, null, 2));
   };
 
+  // Validation function to check if all required fields are filled
+  const isFormValid = () => {
+    return (
+      formData.name.trim() !== "" &&
+      formData.location.trim() !== "" &&
+      formData.amenities.trim() !== "" &&
+      formData.description.trim() !== "" &&
+      formData.sports.trim() !== "" &&
+      formData.groundType.trim() !== "" &&
+      formData.groundWidth.trim() !== "" &&
+      formData.groundLength.trim() !== "" &&
+      formData.groundImages !== null
+    );
+  };
+
   return (
     <>
       <form
@@ -80,7 +95,7 @@ const List: React.FC = () => {
             </label>
             <div className="relative">
               <span className="absolute inset-y-0 left-3 flex items-center text-gray-400">
-                <User size={16} />
+                <User size={18} />
               </span>
               <input
                 id="name"
@@ -88,7 +103,7 @@ const List: React.FC = () => {
                 placeholder="Liverpool Ground"
                 value={formData.name}
                 onChange={handleChange}
-                className="w-full border border-gray-300 rounded-md py-2 pl-10 pr-3 text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
+                className="w-full border border-gray-300 rounded-md py-2 pl-10 pr-3 text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-green-600 focus:border-green-600"
               />
             </div>
           </div>
@@ -101,7 +116,7 @@ const List: React.FC = () => {
             </label>
             <div className="relative">
               <span className="absolute inset-y-0 left-3 flex items-center text-gray-400">
-                <MapPin size={16} />
+                <MapPin size={18} />
               </span>
               <input
                 id="location"
@@ -109,7 +124,7 @@ const List: React.FC = () => {
                 placeholder="Melwatha"
                 value={formData.location}
                 onChange={handleChange}
-                className="w-full border border-gray-300 rounded-md py-2 pl-10 pr-3 text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
+                className="w-full border border-gray-300 rounded-md py-2 pl-10 pr-3 text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-green-600 focus:border-green-600"
               />
             </div>
           </div>
@@ -126,7 +141,7 @@ const List: React.FC = () => {
               placeholder="Select Amenities"
               value={formData.amenities}
               onChange={handleChange}
-              className="w-full border border-gray-300 rounded-md py-2 pl-3 pr-10 text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
+              className="w-full border border-gray-300 rounded-md py-2 pl-3 pr-10 text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-green-600 focus:border-green-600"
             />
             <datalist id="amenities-list">
               {amenitiesOptions.map((item) => (
@@ -150,7 +165,7 @@ const List: React.FC = () => {
               placeholder="Enter a description..."
               value={formData.description}
               onChange={handleChange}
-              className="flex-1 w-full border border-gray-300 rounded-md p-3 text-gray-700 placeholder-gray-400 resize-none focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
+              className="flex-1 w-full border border-gray-300 rounded-md p-3 text-gray-700 placeholder-gray-400 resize-none focus:outline-none focus:ring-1 focus:ring-green-600 focus:border-green-600"
             />
           </div>
           <div className="flex flex-col">
@@ -159,10 +174,10 @@ const List: React.FC = () => {
             </label>
             <label
               htmlFor="upload"
-              className="flex-1 cursor-pointer flex flex-col items-center justify-center border border-gray-300 rounded-md text-center p-4 text-gray-500 hover:border-blue-600 hover:text-blue-600 transition-colors"
+              className="flex-1 cursor-pointer flex flex-col items-center justify-center border border-gray-300 rounded-md text-center p-4 text-gray-500 hover:border-green-600 hover:text-green-600 transition-colors"
             >
               <span className="mb-1 p-2 rounded-full bg-white shadow-md">
-                <Upload size={16} />
+                <Upload size={18} />
               </span>
               <span className="text-green-600 font-semibold text-sm">
                 Click to upload
@@ -196,7 +211,7 @@ const List: React.FC = () => {
               placeholder="Select the sports"
               value={formData.sports}
               onChange={handleChange}
-              className="w-full border border-gray-300 rounded-md py-2 pl-10 pr-3 text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
+              className="w-full border border-gray-300 rounded-md py-2 pl-10 pr-3 text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-green-600 focus:border-green-600"
             />
             <span className="absolute left-3 top-[38px] text-gray-400 pointer-events-none">
               {/* ball icon lucide */}
@@ -220,7 +235,7 @@ const List: React.FC = () => {
               placeholder="Select the type"
               value={formData.groundType}
               onChange={handleChange}
-              className="w-full border border-gray-300 rounded-md py-2 pl-10 pr-3 text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
+              className="w-full border border-gray-300 rounded-md py-2 pl-10 pr-3 text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-green-600 focus:border-green-600"
             />
             <span className="absolute left-3 top-[38px] text-gray-400 pointer-events-none">
               {/* ball icon */}
@@ -240,14 +255,15 @@ const List: React.FC = () => {
             </label>
             <div className="relative">
               <span className="absolute inset-y-0 left-3 flex items-center text-gray-400">
-                <MapPin size={16} />
+                <MapPin size={18} />
               </span>
               <input
                 id="groundWidth"
                 type="text"
+                placeholder="10m"
                 value={formData.groundWidth}
                 onChange={handleChange}
-                className="w-full border border-gray-300 rounded-md py-2 pl-10 pr-3 text-gray-700 focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
+                className="w-full border border-gray-300 rounded-md py-2 pl-10 pr-3 text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-green-600 focus:border-green-600"
               />
             </div>
           </div>
@@ -260,21 +276,22 @@ const List: React.FC = () => {
             </label>
             <div className="relative">
               <span className="absolute inset-y-0 left-3 flex items-center text-gray-400">
-                <MapPin size={16} />
+                <MapPin size={18} />
               </span>
               <input
                 id="groundLength"
                 type="text"
+                placeholder="10m"
                 value={formData.groundLength}
                 onChange={handleChange}
-                className="w-full border border-gray-300 rounded-md py-2 pl-10 pr-3 text-gray-700 focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
+                className="w-full border border-gray-300 rounded-md py-2 pl-10 pr-3 text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-green-600 focus:border-green-600"
               />
             </div>
           </div>
         </div>
       </form>
 
-      <div className="max-w-6xl mx-auto p-4 space-y-6 mt-[120px]">
+      <div className="max-w-6xl mx-auto p-4 space-y-6 mt-5">
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 ">
           <div className="relative">
             <button
@@ -290,14 +307,25 @@ const List: React.FC = () => {
             </div>
           </div>
           <div>
-            <Link href="/owner-documentation"> 
+            {isFormValid() ? (
+              <Link href="/owner-documentation"> 
+                <button
+                  type="button"
+                  className="w-full border border-gray-300 rounded-md py-2 text-white bg-btncolor"
+                >
+                  Next
+                </button>
+              </Link>
+            ) : (
               <button
                 type="button"
-                className="w-full border border-gray-300 rounded-md py-2 text-white bg-btncolor"
+                disabled
+                className="w-full border border-gray-300 rounded-md py-2 text-white bg-btncolor opacity-50 cursor-not-allowed"
+                title="Please fill all required fields"
               >
                 Next
               </button>
-            </Link>
+            )}
           </div>
         </div>
       </div>
