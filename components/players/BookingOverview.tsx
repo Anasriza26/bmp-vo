@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
 import Link from "next/link";
+import Image from "next/image";
 
 interface BookingSlot {
   id: string;
@@ -67,11 +68,11 @@ const BookingOverview = () => {
               <Card key={slot.id} className="relative">
                 <CardContent className="p-4 md:p-6">
                   <div className="flex items-center justify-between">
-                    <div className="flex items-center space-x-4">
+                    <div className="flex items-center space-x-4 flex-col md:flex-row">
                       <div className="text-gray-600 text-sm md:text-base">
                         {slot.date}
                       </div>
-                      <div className="bg-green-600 text-white px-3 py-1 rounded text-sm md:text-base font-medium">
+                      <div className="flex flex-col md:flex-row bg-green-600 text-white px-3 py-1 rounded text-sm md:text-base font-medium">
                         {slot.time}
                       </div>
                     </div>
@@ -142,15 +143,19 @@ const BookingOverview = () => {
           </div>
 
           {/* Payment Button */}
-          <div className="sticky bottom-4 md:static">
+          <div className="sticky bottom-4 md:static ">
             <Link href="/payment-success">
               <Button
-                className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 md:py-4 text-base md:text-lg font-semibold rounded-lg"
+                className="w-full h-[50px] bg-blue-700 hover:bg-blue-700 text-white py-3 md:py-4 text-base md:text-lg font-semibold rounded-lg"
                 disabled={!agreedToTerms || bookingSlots.length === 0}
               >
                 <div className="flex items-center justify-center space-x-2">
-                  <span>Pay with</span>
-                  <span className="font-semibold">PayHere</span>
+                  <Image
+                    src={"/assets/icons/Payment.svg"}
+                    alt="Payment"
+                    width={178}
+                    height={24}
+                  />
                 </div>
               </Button>
             </Link>
