@@ -2,6 +2,7 @@ import BellButton from "@/components/common/BellButton";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import CommonCard from "@/components/common/CommonCard";
 import { ArrowUp } from "lucide-react";
+import RevenueGraph from "@/components/admin/RevenueGraph";
 
 
 const Dashboard = () => {
@@ -22,7 +23,7 @@ const Dashboard = () => {
           </div>
         </header>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8 px-4 pt-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-4  px-4 pt-6">
           <CommonCard
             title="Total Turfs"
             value="27"
@@ -45,6 +46,7 @@ const Dashboard = () => {
             subtitle="Last updated on August"
           />
         </div>
+        <RevenueGraph />
       </div>
     </>
   );
