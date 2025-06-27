@@ -4,6 +4,7 @@ import React from "react";
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { Clock } from "lucide-react";
 import Logo from "../assets/BMP-Logo.jpg";
 import ProgressStepper from "../progress-stepper/Progress";
 
@@ -18,6 +19,7 @@ const Timeslot = () => {
   const [endTime, setEndTime] = useState("");
   const [timeRows, setTimeRows] = useState<TimeRow[]>([]);
   const [nextId, setNextId] = useState(1);
+  const [showValidation, setShowValidation] = useState(false);
 
   const timeOptions = [
     "10 AM",
@@ -46,10 +48,20 @@ const Timeslot = () => {
     setNextId(nextId + 1);
     setStartTime("");
     setEndTime("");
+    setShowValidation(false);
   };
 
   const handleDelete = (id: number) => {
     setTimeRows(timeRows.filter((row) => row.id !== id));
+  };
+
+  const handleNext = () => {
+    if (timeRows.length === 0) {
+      setShowValidation(true);
+      alert("Please add at least one time slot before proceeding.");
+      return;
+    }
+    // Navigation will proceed if validation passes
   };
 
   return (
@@ -84,35 +96,41 @@ const Timeslot = () => {
 
         <div className="bg-white p-6 max-w-4xl mx-auto space-y-4 flex flex-col items-center">
           <div className="flex flex-wrap gap-6 items-center mb-4 justify-center">
-            <select
-              value={startTime}
-              onChange={(e) => setStartTime(e.target.value)}
-              className="border border-green-600 rounded-md px-4 py-2 text-green-600 font-semibold text-sm min-w-[140px] cursor-pointer"
-            >
-              <option value="" disabled>
-            ⏰ Start Time
-              </option>
-              {timeOptions.map((time) => (
-            <option key={time} value={time}>
-              {time}
-            </option>
-              ))}
-            </select>
+            <div className="relative">
+              <Clock className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-green-600" />
+              <select
+                value={startTime}
+                onChange={(e) => setStartTime(e.target.value)}
+                className="border border-green-600 rounded-md pl-10 pr-4 py-2 text-green-600 font-semibold text-sm min-w-[140px] cursor-pointer appearance-none"
+              >
+                <option value="" disabled>
+                  Start Time
+                </option>
+                {timeOptions.map((time) => (
+                  <option key={time} value={time}>
+                    {time}
+                  </option>
+                ))}
+              </select>
+            </div>
 
-            <select
-              value={endTime}
-              onChange={(e) => setEndTime(e.target.value)}
-              className="border border-green-600 rounded-md px-4 py-2 text-green-600 font-semibold text-sm min-w-[140px] cursor-pointer"
-            >
-              <option value="" disabled>
-            ⏰ End Time
-              </option>
-              {timeOptions.map((time) => (
-            <option key={time} value={time}>
-              {time}
-            </option>
-              ))}
-            </select>
+            <div className="relative">
+              <Clock className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-green-600" />
+              <select
+                value={endTime}
+                onChange={(e) => setEndTime(e.target.value)}
+                className="border border-green-600 rounded-md pl-10 pr-4 py-2 text-green-600 font-semibold text-sm min-w-[140px] cursor-pointer appearance-none"
+              >
+                <option value="" disabled>
+                  End Time
+                </option>
+                {timeOptions.map((time) => (
+                  <option key={time} value={time}>
+                    {time}
+                  </option>
+                ))}
+              </select>
+            </div>
 
             <button
               onClick={handleAdd}
@@ -122,27 +140,33 @@ const Timeslot = () => {
             </button>
           </div>
 
-          <div className="space-y-4">
+          {showValidation && timeRows.length === 0 && (
+            <div className="text-red-600 text-sm text-center mb-4">
+              Please add at least one time slot to continue.
+            </div>
+          )}
+
+          <div className="space-y-2">
             {timeRows.map((row) => (
               <div key={row.id} className="flex flex-wrap gap-6 items-center justify-center">
-            <button
-              type="button"
-              className="flex items-center gap-2 border border-gray-300 rounded-md px-4 py-2 text-gray-700 font-normal text-sm min-w-[140px] justify-center"
-            >
-              <i className="far fa-clock"></i> {row.start}
-            </button>
-            <button
-              type="button"
-              className="flex items-center gap-2 border border-gray-300 rounded-md px-4 py-2 text-gray-700 font-normal text-sm min-w-[140px] justify-center"
-            >
-              <i className="far fa-clock"></i> {row.end}
-            </button>
-            <button
-              onClick={() => handleDelete(row.id)}
-              className="border border-red-600 text-red-600 rounded-md px-6 py-2 font-semibold text-sm min-w-[100px]"
-            >
-              Delete
-            </button>
+                <button
+                  type="button"
+                  className="flex items-center gap-2 border border-gray-300 rounded-md px-4 py-2 text-gray-700 font-normal text-sm min-w-[140px] justify-center"
+                >
+                  <Clock className="w-4 h-4" /> {row.start}
+                </button>
+                <button
+                  type="button"
+                  className="flex items-center gap-2 border border-gray-300 rounded-md px-4 py-2 text-gray-700 font-normal text-sm min-w-[140px] justify-center"
+                >
+                  <Clock className="w-4 h-4" /> {row.end}
+                </button>
+                <button
+                  onClick={() => handleDelete(row.id)}
+                  className="border border-red-600 text-red-600 rounded-md px-6 py-2 font-semibold text-sm min-w-[100px]"
+                >
+                  Delete
+                </button>
               </div>
             ))}
           </div>
@@ -164,12 +188,24 @@ const Timeslot = () => {
               </div>
             </div>
             <div>
-              <Link href="/week-rate"><button
-                type="button"
-                className="w-full border border-gray-300 rounded-md py-2 text-white bg-btncolor"
-              >
-                Next
-              </button></Link>
+              {timeRows.length > 0 ? (
+                <Link href="/week-rate">
+                  <button
+                    type="button"
+                    className="w-full border border-gray-300 rounded-md py-2 text-white bg-btncolor"
+                  >
+                    Next
+                  </button>
+                </Link>
+              ) : (
+                <button
+                  type="button"
+                  onClick={handleNext}
+                  className="w-full border border-gray-300 rounded-md py-2 text-white bg-btncolor opacity-75"
+                >
+                  Next
+                </button>
+              )}
             </div>
           </div>
         </div>
