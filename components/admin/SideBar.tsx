@@ -43,12 +43,12 @@ const items = [
     icon: "/assets/admin_icons/players.svg",
   },
   {
-    title: "Players",
+    title: "Owners",
     url: "/admin/owners",
     icon: "/assets/admin_icons/owners.svg",
   },
   {
-    title: "Players",
+    title: "Payments",
     url: "/admin/payments",
     icon: "/assets/admin_icons/payments.svg",
   },
