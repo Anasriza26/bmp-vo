@@ -1,7 +1,9 @@
-import React from "react";
+import { DiscountPage } from "@/components/discounts-page";
 
 const Discounts = () => {
-  return <></>;
+  return <>
+  <DiscountPage />
+  </>;
 };
 
 export default Discounts;
