@@ -1,3 +1,6 @@
+"use client";
+
+import { usePathname } from "next/navigation";
 import { Home } from "lucide-react";
 import Image from "next/image";
 
@@ -12,71 +15,73 @@ import {
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
 
-// Menu items.
+// Menu items
 const items = [
   {
     title: "Home",
-    url: "#",
-    icon: Home, // ✅ React component
+    url: "/admin-dashboard",
+    icon: Home,
   },
   {
     title: "Bookings",
-    url: "#",
-    icon: "/assets/admin_icons/booking.svg", // ✅ Image path
+    url: "/admin-bookings",
+    icon: "/assets/admin_icons/booking.svg",
   },
   {
     title: "Turfs",
-    url: "#",
+    url: "/admin-turfs",
     icon: "/assets/admin_icons/turfs.svg",
   },
   {
     title: "Wallet",
-    url: "#",
+    url: "/admin-wallet",
     icon: "/assets/admin_icons/wallet.svg",
   },
   {
     title: "Players",
-    url: "#",
+    url: "/admin-players",
     icon: "/assets/admin_icons/players.svg",
   },
   {
     title: "Transactions",
-    url: "#",
+    url: "/admin-transactions",
     icon: "/assets/admin_icons/transactions.svg",
   },
   {
     title: "Promotions",
-    url: "#",
+    url: "/admin-promotions",
     icon: "/assets/admin_icons/promotions.svg",
   },
   {
     title: "Discounts",
-    url: "#",
+    url: "/admin-discounts",
     icon: "/assets/admin_icons/discounts.svg",
   },
   {
     title: "Inquiries",
-    url: "#",
+    url: "/admin-inquiries",
     icon: "/assets/admin_icons/inquiries.svg",
   },
   {
     title: "Staffs",
-    url: "#",
+    url: "/admin-staffs",
     icon: "/assets/admin_icons/staffs.svg",
   },
   {
     title: "Sports",
-    url: "#",
+    url: "/admin-sports",
     icon: "/assets/admin_icons/sports.svg",
   },
   {
     title: "Amenity",
-    url: "#",
+    url: "/admin-amenity",
     icon: "/assets/admin_icons/amenity.svg",
   },
 ];
 
 export function AppSidebar() {
+  const pathname = usePathname();
+
   return (
     <Sidebar className="bg-white">
       <SidebarContent>
@@ -86,26 +91,33 @@ export function AppSidebar() {
           </SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
-              {items.map((item) => (
-                <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton asChild>
-                    <a href={item.url} className="flex items-center gap-3">
-                      {/* ✅ Check if icon is a string (image) or a component */}
-                      {typeof item.icon === "string" ? (
-                        <Image
-                          src={item.icon}
-                          alt={item.title}
-                          width={20}
-                          height={20}
-                        />
-                      ) : (
-                        <item.icon className="w-5 h-5" />
-                      )}
-                      <span>{item.title}</span>
-                    </a>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              ))}
+              {items.map((item) => {
+                const isActive = pathname === item.url;
+                return (
+                  <SidebarMenuItem key={item.title}>
+                    <SidebarMenuButton asChild>
+                      <a
+                        href={item.url}
+                        className={`flex items-center gap-3 px-3 py-2 rounded-md ${
+                          isActive ? "bg-[#25A359] text-white" : "hover:bg-gray-100"
+                        }`}
+                      >
+                        {typeof item.icon === "string" ? (
+                          <Image
+                            src={item.icon}
+                            alt={item.title}
+                            width={20}
+                            height={20}
+                          />
+                        ) : (
+                          <item.icon className="w-5 h-5" />
+                        )}
+                        <span>{item.title}</span>
+                      </a>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                );
+              })}
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
