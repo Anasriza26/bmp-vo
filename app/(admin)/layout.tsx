@@ -9,7 +9,7 @@ export default async function Layout({ children }: { children: React.ReactNode }
   return (
     <SidebarProvider>
       <AppSidebar />
-      <main>
+      <main className="flex flex-col w-full mx-6">
         {children}
       </main>
     </SidebarProvider>
