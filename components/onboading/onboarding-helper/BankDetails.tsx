@@ -7,14 +7,25 @@ const BankDetails = () => {
 
   
       const fileInputRef = useRef<HTMLInputElement | null>(null);
+      const [uploadedFile, setUploadedFile] = useState<File | null>(null);
     
       const [formData, setFormData] = useState({
-        accountHolder: "John Doe",
-        nic: "200112700021",
+        accountHolder: "",
+        nic: "",
         bankName: "",
-        branchName: "Puttalam",
-        branchCode: "XXXXXXXX",
-        accountNumber: "XXXXXXXX",
+        branchName: "",
+        branchCode: "",
+        accountNumber: "",
+      });
+
+      const [errors, setErrors] = useState({
+        accountHolder: false,
+        nic: false,
+        bankName: false,
+        branchName: false,
+        branchCode: false,
+        accountNumber: false,
+        bankStatement: false,
       });
     
       const handleChange = (
@@ -22,6 +33,11 @@ const BankDetails = () => {
       ) => {
         const { name, value } = e.target;
         setFormData({ ...formData, [name]: value });
+        
+        // Clear error when user starts typing
+        if (errors[name as keyof typeof errors]) {
+          setErrors({ ...errors, [name]: false });
+        }
       };
     
       const handleClick = () => {
@@ -33,9 +49,60 @@ const BankDetails = () => {
       const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         if (e.target.files && e.target.files.length > 0) {
           const file = e.target.files[0];
+          setUploadedFile(file);
           console.log("Selected file:", file);
-          // Handle file upload or preview here
+          
+          // Clear bank statement error when file is uploaded
+          if (errors.bankStatement) {
+            setErrors({ ...errors, bankStatement: false });
+          }
         }
+      };
+
+      const validateForm = () => {
+        const newErrors = {
+          accountHolder: !formData.accountHolder.trim(),
+          nic: !formData.nic.trim(),
+          bankName: !formData.bankName,
+          branchName: !formData.branchName.trim(),
+          branchCode: !formData.branchCode.trim(),
+          accountNumber: !formData.accountNumber.trim(),
+          bankStatement: !uploadedFile,
+        };
+
+        setErrors(newErrors);
+        
+        // Return true if no errors
+        return !Object.values(newErrors).some(error => error);
+      };
+
+      const handleProceed = (e: React.MouseEvent) => {
+        e.preventDefault();
+        
+        if (!validateForm()) {
+          // Scroll to first error field
+          const firstErrorField = Object.keys(errors).find(key => 
+            errors[key as keyof typeof errors]
+          );
+          if (firstErrorField) {
+            const element = document.getElementById(firstErrorField === 'bankStatement' ? 'bank-statement-section' : firstErrorField);
+            element?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }
+          return false;
+        }
+        
+        // If validation passes, navigate to next page
+        window.location.href = '/onboarding-otp';
+      };
+
+      const isFormValid = () => {
+        return formData.accountHolder.trim() &&
+               formData.nic.trim() &&
+               formData.bankName &&
+               formData.branchName.trim() &&
+               formData.branchCode.trim() &&
+               formData.accountNumber.trim() &&
+               uploadedFile;
       };
 
   return (<>
@@ -47,7 +114,7 @@ const BankDetails = () => {
                 htmlFor="accountHolder"
                 className="block text-sm text-gray-700 mb-1"
               >
-                Account Holder’s Name
+                Account Holder's Name
               </label>
               <div className="relative">
                 <span className="absolute inset-y-0 left-3 flex items-center text-gray-400">
@@ -59,9 +126,17 @@ const BankDetails = () => {
                   name="accountHolder"
                   value={formData.accountHolder}
                   onChange={handleChange}
-                  className="w-full border border-gray-300 rounded-md py-2 pl-10 pr-3 text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500"
+                  placeholder="Riza"
+                  className={`w-full border rounded-md py-2 pl-10 pr-3 text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-1 ${
+                    errors.accountHolder 
+                      ? 'border-red-500 focus:ring-red-500 focus:border-red-500' 
+                      : 'border-gray-300 focus:ring-green-600 focus:border-green-600'
+                  }`}
                 />
               </div>
+              {errors.accountHolder && (
+                <p className="text-red-500 text-xs mt-1">Account holder's name is required</p>
+              )}
             </div>
 
             <div>
@@ -74,8 +149,16 @@ const BankDetails = () => {
                 name="nic"
                 value={formData.nic}
                 onChange={handleChange}
-                className="w-full border border-gray-300 rounded-md py-2 px-3 text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500"
+                placeholder="200615796787"
+                className={`w-full border rounded-md py-2 px-3 text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-1 ${
+                  errors.nic 
+                    ? 'border-red-500 focus:ring-red-500 focus:border-red-500' 
+                    : 'border-gray-300 focus:ring-green-600 focus:border-green-600'
+                }`}
               />
+              {errors.nic && (
+                <p className="text-red-500 text-xs mt-1">NIC is required</p>
+              )}
             </div>
 
             <div>
@@ -94,7 +177,11 @@ const BankDetails = () => {
                   name="bankName"
                   value={formData.bankName}
                   onChange={handleChange}
-                  className="w-full border border-gray-300 rounded-md py-2 pl-10 pr-8 text-gray-700 appearance-none focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500"
+                  className={`w-full border rounded-md py-2 pl-10 pr-8 text-gray-700 appearance-none focus:outline-none focus:ring-1 ${
+                    errors.bankName 
+                      ? 'border-red-500 focus:ring-red-500 focus:border-red-500' 
+                      : 'border-gray-300 focus:ring-green-600 focus:border-green-600'
+                  }`}
                 >
                   <option value="" disabled>
                     Select your bank
@@ -107,6 +194,9 @@ const BankDetails = () => {
                   <i className="fas fa-chevron-down"></i>
                 </span>
               </div>
+              {errors.bankName && (
+                <p className="text-red-500 text-xs mt-1">Please select a bank</p>
+              )}
             </div>
 
             <div>
@@ -126,9 +216,16 @@ const BankDetails = () => {
                   name="branchName"
                   value={formData.branchName}
                   onChange={handleChange}
-                  className="w-full border border-gray-300 rounded-md py-2 pl-10 pr-3 text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500"
+                  className={`w-full border rounded-md py-2 pl-10 pr-3 text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-1 ${
+                    errors.branchName 
+                      ? 'border-red-500 focus:ring-red-500 focus:border-red-500' 
+                      : 'border-gray-300 focus:ring-green-600 focus:border-green-600'
+                  }`}
                 />
               </div>
+              {errors.branchName && (
+                <p className="text-red-500 text-xs mt-1">Branch name is required</p>
+              )}
             </div>
 
             <div>
@@ -148,9 +245,16 @@ const BankDetails = () => {
                   name="branchCode"
                   value={formData.branchCode}
                   onChange={handleChange}
-                  className="w-full border border-gray-300 rounded-md py-2 pl-10 pr-3 text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500"
+                  className={`w-full border rounded-md py-2 pl-10 pr-3 text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-1 ${
+                    errors.branchCode 
+                      ? 'border-red-500 focus:ring-red-500 focus:border-red-500' 
+                      : 'border-gray-300 focus:ring-green-600 focus:border-green-600'
+                  }`}
                 />
               </div>
+              {errors.branchCode && (
+                <p className="text-red-500 text-xs mt-1">Branch code is required</p>
+              )}
             </div>
 
             <div>
@@ -162,7 +266,7 @@ const BankDetails = () => {
               </label>
               <div className="relative">
                 <span className="absolute inset-y-0 left-3 flex items-center text-gray-400">
-                  <i className="fas fa-map-marker-alt"></i>
+                  <i className="fas fa-credit-card"></i>
                 </span>
                 <input
                   type="text"
@@ -170,41 +274,63 @@ const BankDetails = () => {
                   name="accountNumber"
                   value={formData.accountNumber}
                   onChange={handleChange}
-                  className="w-full border border-gray-300 rounded-md py-2 pl-10 pr-3 text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500"
+                  className={`w-full border rounded-md py-2 pl-10 pr-3 text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-1 ${
+                    errors.accountNumber 
+                      ? 'border-red-500 focus:ring-red-500 focus:border-red-500' 
+                      : 'border-gray-300 focus:ring-green-600 focus:border-green-600'
+                  }`}
                 />
               </div>
+              {errors.accountNumber && (
+                <p className="text-red-500 text-xs mt-1">Account number is required</p>
+              )}
             </div>
 
-            <div className="sm:col-span-2">
+            <div className="sm:col-span-2" id="bank-statement-section">
               <h2 className="text-gray-800 text-base font-normal mb-1">
                 Bank Statement
               </h2>
               <div
-                className="border border-gray-300 rounded-lg p-6 flex flex-col items-center justify-center cursor-pointer h-[100px]"
+                className={`border rounded-lg p-6 flex flex-col items-center justify-center cursor-pointer h-[100px] ${
+                  errors.bankStatement 
+                    ? 'border-red-500 bg-red-50' 
+                    : uploadedFile 
+                      ? 'border-green-600 bg-green-50' 
+                      : 'border-gray-300'
+                }`}
                 onClick={handleClick}
                 onDragOver={(e) => e.preventDefault()}
                 onDrop={(e) => {
                   e.preventDefault();
                   if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
                     const file = e.dataTransfer.files[0];
+                    setUploadedFile(file);
                     console.log("Dropped file:", file);
-                    // Handle file upload or preview here
+                    
+                    // Clear bank statement error when file is uploaded
+                    if (errors.bankStatement) {
+                      setErrors({ ...errors, bankStatement: false });
+                    }
                   }
                 }}
               >
-                <div className="bg-gray-100 rounded-full p-2">
-                  <i className="fas fa-cloud-upload-alt text-gray-500 text-lg"></i>
+                <div className={`rounded-full p-2 ${uploadedFile ? 'bg-green-100' : 'bg-gray-100'}`}>
+                  <i className={`fas ${uploadedFile ? 'fa-check text-green-600' : 'fa-cloud-upload-alt text-gray-500'} text-lg`}></i>
                 </div>
-                <p className="text-green-600 font-semibold text-sm mt-1">
-                  Click to upload
-                  <span className="font-normal text-gray-600">
-                    {" "}
-                    or drag and drop
-                  </span>
+                <p className={`font-semibold text-sm mt-1 ${uploadedFile ? 'text-green-600' : 'text-green-600'}`}>
+                  {uploadedFile ? `Uploaded: ${uploadedFile.name}` : 'Click to upload'}
+                  {!uploadedFile && (
+                    <span className="font-normal text-gray-600">
+                      {" "}
+                      or drag and drop
+                    </span>
+                  )}
                 </p>
-                <p className="text-gray-500 text-xs mt-1">
-                  JPEG, PNG, JPG (max. 800×400px)
-                </p>
+                {!uploadedFile && (
+                  <p className="text-gray-500 text-xs mt-1">
+                    JPEG, PNG, JPG (max. 800×400px)
+                  </p>
+                )}
                 <input
                   type="file"
                   accept="image/jpeg, image/png, image/jpg"
@@ -213,6 +339,9 @@ const BankDetails = () => {
                   className="hidden"
                 />
               </div>
+              {errors.bankStatement && (
+                <p className="text-red-500 text-xs mt-1">Please upload a bank statement</p>
+              )}
             </div>
           </form>
         </div>
@@ -232,12 +361,18 @@ const BankDetails = () => {
               </div>
             </div>
             <div>
-              <Link href="/onboarding-otp"><button
+              <button
                 type="button"
-                className="w-full border border-gray-300 rounded-md py-2 text-white bg-btncolor"
+                onClick={handleProceed}
+                disabled={!isFormValid()}
+                className={`w-full border border-gray-300 rounded-md py-2 text-white transition-all duration-200 ${
+                  isFormValid() 
+                    ? 'bg-btncolor hover:bg-opacity-90 cursor-pointer' 
+                    : 'bg-gray-400 cursor-not-allowed'
+                }`}
               >
                 Proceed
-              </button></Link>
+              </button>
             </div>
           </div>
         </div>
