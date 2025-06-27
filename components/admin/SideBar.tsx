@@ -43,6 +43,16 @@ const items = [
     icon: "/assets/admin_icons/players.svg",
   },
   {
+    title: "Players",
+    url: "/admin/owners",
+    icon: "/assets/admin_icons/owners.svg",
+  },
+  {
+    title: "Players",
+    url: "/admin/payments",
+    icon: "/assets/admin_icons/payments.svg",
+  },
+  {
     title: "Transactions",
     url: "/admin/transactions",
     icon: "/assets/admin_icons/transactions.svg",
