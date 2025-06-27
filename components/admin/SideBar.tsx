@@ -19,62 +19,62 @@ import {
 const items = [
   {
     title: "Home",
-    url: "/admin-dashboard",
+    url: "/admin",
     icon: Home,
   },
   {
     title: "Bookings",
-    url: "/admin-bookings",
+    url: "/admin/bookings",
     icon: "/assets/admin_icons/booking.svg",
   },
   {
     title: "Turfs",
-    url: "/admin-turfs",
+    url: "/admin/turfs",
     icon: "/assets/admin_icons/turfs.svg",
   },
   {
     title: "Wallet",
-    url: "/admin-wallet",
+    url: "/admin/wallet",
     icon: "/assets/admin_icons/wallet.svg",
   },
   {
     title: "Players",
-    url: "/admin-players",
+    url: "/admin/players",
     icon: "/assets/admin_icons/players.svg",
   },
   {
     title: "Transactions",
-    url: "/admin-transactions",
+    url: "/admin/transactions",
     icon: "/assets/admin_icons/transactions.svg",
   },
   {
     title: "Promotions",
-    url: "/admin-promotions",
+    url: "/admin/promotions",
     icon: "/assets/admin_icons/promotions.svg",
   },
   {
     title: "Discounts",
-    url: "/admin-discounts",
+    url: "/admin/discounts",
     icon: "/assets/admin_icons/discounts.svg",
   },
   {
     title: "Inquiries",
-    url: "/admin-inquiries",
+    url: "/admin/inquiries",
     icon: "/assets/admin_icons/inquiries.svg",
   },
   {
     title: "Staffs",
-    url: "/admin-staffs",
+    url: "/admin/staffs",
     icon: "/assets/admin_icons/staffs.svg",
   },
   {
     title: "Sports",
-    url: "/admin-sports",
+    url: "/admin/sports",
     icon: "/assets/admin_icons/sports.svg",
   },
   {
     title: "Amenity",
-    url: "/admin-amenity",
+    url: "/admin/amenity",
     icon: "/assets/admin_icons/amenity.svg",
   },
 ];
