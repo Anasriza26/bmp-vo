@@ -1,7 +1,9 @@
-import React from "react";
+import AdminPlayers from "@/components/admin/Players";
 
 const Players = () => {
-  return <></>;
+  return <>
+  <AdminPlayers />
+  </>;
 };
 
 export default Players;
