@@ -14,50 +14,47 @@ const ProgressStepper: React.FC<ProgressStepperProps> = ({
   steps,
 }) => {
   return (
-    <div className="flex items-center justify-between w-full max-w-4xl mx-auto ">
+    <div className="flex flex-wrap justify-between items-center w-full max-w-4xl mx-auto px-2 sm:px-4">
       {steps.map((step, index) => {
         const stepNumber = index + 1;
         const isCompleted = stepNumber < currentStep;
         const isActive = stepNumber === currentStep;
 
         return (
-          <React.Fragment key={index}>
-            {/* Circle inside relative container */}
-            <div className="relative flex flex-col items-center">
-              {/* Left line */}
-              {index !== 0 && (
-                <div className="absolute left-0 top-1/3  w-full h-0.5 bg-gray-300 z-0 transform -translate-x-full -translate-y-full">
-                  {stepNumber <= currentStep && (
-                    <div className="absolute left-0 top-0 h-full bg-green-600" style={{ width: '100%' }}></div>
-                  )}
-                </div>
-              )}
-
-              {/* Circle */}
-              <div
-                className={`flex items-center justify-center rounded-full border-2 w-10 h-10 text-sm font-semibold z-10 ${
-                  isCompleted
-                    ? "bg-green-600 border-green-600 text-white"
-                    : isActive
-                    ? "bg-white border-green-600 text-green-600"
-                    : "bg-white border-green-600 text-gray-500"
-                }`}
-              >
-                {stepNumber}
+          <div key={index} className="relative flex flex-col items-center flex-1 min-w-[60px]">
+            {/* Left line */}
+            {index !== 0 && (
+              <div className="absolute left-0 top-5 w-full h-0.5 bg-gray-300 z-0 -translate-x-1/2">
+                {stepNumber <= currentStep && (
+                  <div className="absolute left-0 top-0 h-full bg-green-600" style={{ width: '100%' }}></div>
+                )}
               </div>
+            )}
 
-              {/* Label */}
-              <div
-                className={`text-xs mt-2 text-center w-full ${
-                  isCompleted || isActive
-                    ? "text-green-600"
-                    : "text-gray-500"
+            {/* Step circle */}
+            <div
+              className={`flex items-center justify-center rounded-full border-2 
+                text-xs sm:text-sm md:text-base font-semibold z-10
+                w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12
+                ${isCompleted
+                  ? "bg-green-600 border-green-600 text-white"
+                  : isActive
+                  ? "bg-white border-green-600 text-green-600"
+                  : "bg-white border-green-600 text-gray-500"
                 }`}
-              >
-                {step.label}
-              </div>
+            >
+              {stepNumber}
             </div>
-          </React.Fragment>
+
+            {/* Label */}
+            <div
+              className={`mt-2 text-center text-[10px] sm:text-xs md:text-sm w-full
+                ${isCompleted || isActive ? "text-green-600" : "text-gray-500"}
+              `}
+            >
+              {step.label}
+            </div>
+          </div>
         );
       })}
     </div>
