@@ -1,7 +1,7 @@
-'use client'; // Add this at the very top
+'use client';
 
 import { useState } from "react";
-import { useRouter } from "next/navigation"; // Changed from "next/router"
+import { useRouter } from "next/navigation";
 import Image from "next/image";
 import Logo from "../public/BMP-Logo.jpg";
 import GoogleIcon from "../public/google-icon.jpg";
@@ -31,7 +31,10 @@ export default function Home() {
     setIsSubmitting(true);
 
     setTimeout(() => {
-      if (email === validCredentials.email && password === validCredentials.password) {
+      if (
+        email === validCredentials.email &&
+        password === validCredentials.password
+      ) {
         router.push("/on-boarding");
       } else {
         setError("Invalid email or password");
@@ -40,16 +43,19 @@ export default function Home() {
     }, 1000);
   };
 
-  const fillDummyCredentials = () => {
-    setEmail(validCredentials.email);
-    setPassword(validCredentials.password);
-  };
-
   return (
-    <main className="flex flex-col justify-center items-center min-h-screen bg-cover bg-center relative px-2 sm:px-4" style={{ backgroundImage: "url('/bg-img.jpg')" }}>
-      <div className="w-full max-w-[95vw] sm:max-w-md md:max-w-lg lg:max-w-xl m-0 sm:my-24 bg-white bg-opacity-90 rounded-xl shadow-lg p-4 sm:p-10">
-        <Image src={Logo} alt="Logo Image" className="mx-auto mb-6 sm:mb-10 w-20 h-20 sm:w-24 sm:h-24 object-contain" />
-        <div className="text-start mb-4 sm:mb-6 font-inter">
+    <main
+      className="flex justify-center items-center h-screen max-h-screen overflow-hidden bg-cover bg-center relative px-2 sm:px-4"
+      style={{ backgroundImage: "url('/bg-img.jpg')" }}
+    >
+      <div className="w-full max-w-[95vw] sm:max-w-md md:max-w-lg lg:max-w-xl bg-white bg-opacity-90 rounded-xl p-4 sm:p-8 md:p-4">
+        <Image
+          src={Logo}
+          alt="BookMyPlay Logo"
+          className="mx-auto mb-5 sm:mb-1 md:mb-1 w-20 h-20 sm:w-24 sm:h-24 object-contain"
+        />
+
+        <div className="text-start mb-4 sm:mb-4 font-inter">
           <div className="font-semibold text-xl sm:text-3xl leading-7 sm:leading-8 text-[#101828] pb-[2px]">
             Sign in
           </div>
@@ -57,8 +63,6 @@ export default function Home() {
             Welcome back! Please enter your details.
           </p>
         </div>
-
-       
 
         <form onSubmit={handleSubmit}>
           {error && (
@@ -81,8 +85,10 @@ export default function Home() {
               onChange={(e) => setEmail(e.target.value)}
               className="w-full h-[42px] rounded-lg border border-gray-300 pt-2.5 pr-3.5 pb-2.5 pl-3.5 mt-1 text-sm"
               required
+              autoComplete="email"
             />
           </div>
+
           <div className="mb-3 sm:mb-4">
             <label
               htmlFor="password"
@@ -97,17 +103,24 @@ export default function Home() {
               onChange={(e) => setPassword(e.target.value)}
               className="w-full h-[42px] rounded-lg border border-gray-300 pt-2.5 pr-3.5 pb-2.5 pl-3.5 mt-1 text-sm"
               required
+              autoComplete="current-password"
             />
           </div>
 
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-3 sm:mb-4 font-inter font-medium mt-3 sm:mt-4 gap-2">
             <div className="flex items-center">
               <input type="checkbox" id="remember-me" className="mr-2" />
-              <label htmlFor="remember-me" className="text-xs sm:text-sm">
+              <label
+                htmlFor="remember-me"
+                className="text-xs sm:text-sm cursor-pointer"
+              >
                 Remember for 30 days
               </label>
             </div>
-            <Link href="#" className="text-[#344054] text-xs sm:text-sm mt-2 sm:mt-0">
+            <Link
+              href="#"
+              className="text-[#344054] text-xs sm:text-sm mt-2 sm:mt-0"
+            >
               Forgot password?
             </Link>
           </div>
@@ -116,10 +129,13 @@ export default function Home() {
             <button
               type="submit"
               disabled={isSubmitting}
-              className={`w-full bg-btncolor text-white py-2 rounded-[8px] mb-3 sm:mb-4 font-semibold text-base ${isSubmitting ? "opacity-70 cursor-not-allowed" : ""}`}
+              className={`w-full bg-btncolor text-white py-2 rounded-[8px] mb-3 sm:mb-4 font-semibold text-base ${
+                isSubmitting ? "opacity-70 cursor-not-allowed" : ""
+              }`}
             >
               {isSubmitting ? "Signing in..." : "Sign in"}
             </button>
+
             <button
               type="button"
               className="w-full border flex items-center justify-center py-2 rounded font-semibold text-base"
@@ -135,7 +151,8 @@ export default function Home() {
             </button>
           </div>
         </form>
-        <div className="text-center mt-4 sm:mt-6">
+
+        <div className="text-center mt-4 sm:mt-4">
           <p className="text-sm">
             Don't have an account?{" "}
             <Link href="#" className="text-[#344054] font-semibold">
@@ -147,7 +164,7 @@ export default function Home() {
 
       <div className="absolute bottom-2 sm:bottom-4 left-1/2 -translate-x-1/2 text-center text-[10px] sm:text-xs text-gray-500 w-[95vw] max-w-lg font-inter font-semibold leading-tight tracking-normal px-1 sm:px-2">
         <p>
-          BookMyPlay uses cookies for analytics personalized content and ads.
+          BookMyPlay uses cookies for analytics, personalized content, and ads.
           <br />
           By using Scale's services you agree to this use of cookies.{" "}
           <Link href="#" className="underline">
