@@ -1,7 +1,10 @@
+import AdminStaff from "@/components/admin/AdminStaff";
 import React from "react";
 
 const Staffs = () => {
-  return <></>;
+  return <>
+  <AdminStaff />
+  </>;
 };
 
 export default Staffs;
