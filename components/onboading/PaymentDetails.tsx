@@ -1,8 +1,7 @@
 import React from "react";
-import Image from "next/image";
-import Logo from "../assets/BMP-Logo.jpg";
 import ProgressStepper from "../progress-stepper/Progress";
 import BankDetails from "../onboading/onboarding-helper/BankDetails";
+import CommonLogo from "../common/CommonLogo";
 
 const PaymentDetails = () => {
 
@@ -12,11 +11,9 @@ const PaymentDetails = () => {
   return (
     <>
       <main>
-        <div className="mt-[60px] ml-[60px]">
-          <Image src={Logo} alt="Owner Details" width={133} height={42} />
-        </div>
+        <CommonLogo />
 
-        <div className="font-semibold">
+        <div className="font-semibold mt-2">
           <ProgressStepper
             currentStep={5.5}
             steps={[
@@ -29,12 +26,12 @@ const PaymentDetails = () => {
           />
         </div>
 
-        <div className="justify-center items-center flex flex-col mt-[30px]">
-          <h2 className="font-semibold text-2xl font-inter text-center">
+        <div className="justify-center items-center flex flex-col md:mt-8 mt-4">
+          <h2 className="font-semibold md:text-2xl text-xl font-inter text-center">
             Submit your bank details
           </h2>
-          <p className="font-normal text-[#667085] mt-[10px] text-center">
-            Add your bank account information to receive <br /> booking payments
+          <p className="font-normal text-[#667085] mt-1 text-center md:text-[14px] text-8px">
+            Add your bank account information to receive booking payments
             securely.
           </p>
         </div>
