@@ -1,8 +1,11 @@
-import React from 'react'
+import { Amenity as AmenityComponent } from "@/components/admin/Amenity";
 
 const Amenity = () => {
-  return (<></>
-  )
-}
+  return (
+    <>
+      <AmenityComponent />
+    </>
+  );
+};
 
-export default Amenity
+export default Amenity;
