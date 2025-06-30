@@ -2,6 +2,13 @@
 import React, { useState, ChangeEvent, FormEvent } from "react";
 import Link from "next/link";
 import { User, MapPin, Upload } from "lucide-react";
+import {
+  Select,
+  SelectTrigger,
+  SelectValue,
+  SelectContent,
+  SelectItem,
+} from "@/components/ui/select";
 
 interface FormData {
   name: string;
@@ -66,7 +73,6 @@ const List: React.FC = () => {
     alert(JSON.stringify(formData, null, 2));
   };
 
-  // Validation function to check if all required fields are filled
   const isFormValid = () => {
     return (
       formData.name.trim() !== "" &&
@@ -89,6 +95,7 @@ const List: React.FC = () => {
         noValidate
       >
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          {/* Name */}
           <div>
             <label htmlFor="name" className="block text-sm text-gray-700 mb-1">
               Name
@@ -107,6 +114,8 @@ const List: React.FC = () => {
               />
             </div>
           </div>
+
+          {/* Location */}
           <div>
             <label
               htmlFor="location"
@@ -128,6 +137,8 @@ const List: React.FC = () => {
               />
             </div>
           </div>
+
+          {/* Amenities Dropdown */}
           <div>
             <label
               htmlFor="amenities"
@@ -135,22 +146,27 @@ const List: React.FC = () => {
             >
               Amenities
             </label>
-            <input
-              list="amenities-list"
-              id="amenities"
-              placeholder="Select Amenities"
+            <Select
               value={formData.amenities}
-              onChange={handleChange}
-              className="w-full border border-gray-300 rounded-md py-2 pl-3 pr-10 text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-green-600 focus:border-green-600"
-            />
-            <datalist id="amenities-list">
-              {amenitiesOptions.map((item) => (
-                <option key={item} value={item} />
-              ))}
-            </datalist>
+              onValueChange={(value) =>
+                setFormData((prev) => ({ ...prev, amenities: value }))
+              }
+            >
+              <SelectTrigger className="w-full border border-gray-300 rounded-md py-2 px-3 text-gray-700 focus:outline-none focus:ring-1 focus:ring-green-600 focus:border-green-600">
+                <SelectValue placeholder="Select Amenities" />
+              </SelectTrigger>
+              <SelectContent>
+                {amenitiesOptions.map((item) => (
+                  <SelectItem key={item} value={item}>
+                    {item}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
           </div>
         </div>
 
+        {/* Description and Image Upload */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
           <div className="sm:col-span-2 flex flex-col">
             <label
@@ -197,55 +213,63 @@ const List: React.FC = () => {
           </div>
         </div>
 
+        {/* Sports, Ground Type, Width, Length */}
         <div className="grid grid-cols-1 sm:grid-cols-6 gap-4 items-end">
-          <div className="sm:col-span-2 relative">
+          {/* Sports */}
+          <div className="sm:col-span-2">
             <label
               htmlFor="sports"
               className="block text-sm text-gray-700 mb-1"
             >
               Sports
             </label>
-            <input
-              list="sports-list"
-              id="sports"
-              placeholder="Select the sports"
+            <Select
               value={formData.sports}
-              onChange={handleChange}
-              className="w-full border border-gray-300 rounded-md py-2 pl-10 pr-3 text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-green-600 focus:border-green-600"
-            />
-            <span className="absolute left-3 top-[38px] text-gray-400 pointer-events-none">
-              {/* ball icon lucide */}
-            </span>
-            <datalist id="sports-list">
-              {sportsOptions.map((item) => (
-                <option key={item} value={item} />
-              ))}
-            </datalist>
+              onValueChange={(value) =>
+                setFormData((prev) => ({ ...prev, sports: value }))
+              }
+            >
+              <SelectTrigger className="w-full border border-gray-300 rounded-md py-2 px-3 text-gray-700 focus:outline-none focus:ring-1 focus:ring-green-600 focus:border-green-600">
+                <SelectValue placeholder="Select the sport" />
+              </SelectTrigger>
+              <SelectContent>
+                {sportsOptions.map((item) => (
+                  <SelectItem key={item} value={item}>
+                    {item}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
           </div>
-          <div className="sm:col-span-2 relative">
+
+          {/* Ground Type */}
+          <div className="sm:col-span-2">
             <label
               htmlFor="groundType"
               className="block text-sm text-gray-700 mb-1"
             >
-              Ground type
+              Ground Type
             </label>
-            <input
-              list="ground-type-list"
-              id="groundType"
-              placeholder="Select the type"
+            <Select
               value={formData.groundType}
-              onChange={handleChange}
-              className="w-full border border-gray-300 rounded-md py-2 pl-10 pr-3 text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-green-600 focus:border-green-600"
-            />
-            <span className="absolute left-3 top-[38px] text-gray-400 pointer-events-none">
-              {/* ball icon */}
-            </span>
-            <datalist id="ground-type-list">
-              {groundTypeOptions.map((item) => (
-                <option key={item} value={item} />
-              ))}
-            </datalist>
+              onValueChange={(value) =>
+                setFormData((prev) => ({ ...prev, groundType: value }))
+              }
+            >
+              <SelectTrigger className="w-full border border-gray-300 rounded-md py-2 px-3 text-gray-700 focus:outline-none focus:ring-1 focus:ring-green-600 focus:border-green-600">
+                <SelectValue placeholder="Select the type" />
+              </SelectTrigger>
+              <SelectContent>
+                {groundTypeOptions.map((item) => (
+                  <SelectItem key={item} value={item}>
+                    {item}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
           </div>
+
+          {/* Ground Width */}
           <div className="relative">
             <label
               htmlFor="groundWidth"
@@ -267,6 +291,8 @@ const List: React.FC = () => {
               />
             </div>
           </div>
+
+          {/* Ground Length */}
           <div className="relative">
             <label
               htmlFor="groundLength"
@@ -291,44 +317,51 @@ const List: React.FC = () => {
         </div>
       </form>
 
+      {/* Button Section */}
       <div className="max-w-6xl mx-auto p-4 space-y-6 mt-5">
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 ">
-          <div className="relative">
-            <button
-              type="button"
-              className="w-full border rounded-md py-2 text-btncolor border-btncolor "
-            >
-              Back
-            </button>
-          </div>
-          <div>
-            <div className="relative">
-              {/* Placeholder for additional content or input */}
-            </div>
-          </div>
-          <div>
-            {isFormValid() ? (
-              <Link href="/owner-documentation"> 
-                <button
-                  type="button"
-                  className="w-full border border-gray-300 rounded-md py-2 text-white bg-btncolor"
-                >
-                  Next
-                </button>
-              </Link>
-            ) : (
-              <button
-                type="button"
-                disabled
-                className="w-full border border-gray-300 rounded-md py-2 text-white bg-btncolor opacity-50 cursor-not-allowed"
-                title="Please fill all required fields"
-              >
-                Next
-              </button>
-            )}
-          </div>
-        </div>
-      </div>
+  <div className="flex flex-row sm:grid sm:grid-cols-3 gap-4">
+    
+    {/* Back Button */}
+    <div className="flex-1">
+      <button
+        type="button"
+        className="w-full border rounded-md py-2 text-btncolor border-btncolor"
+      >
+        Back
+      </button>
+    </div>
+
+    {/* Placeholder for Center (Hidden on Mobile) */}
+    <div className="hidden sm:block">
+      <div className="relative">{/* Add something here if needed */}</div>
+    </div>
+
+    {/* Next Button */}
+    <div className="flex-1">
+      {isFormValid() ? (
+        <Link href="/owner-documentation">
+          <button
+            type="button"
+            className="w-full border border-gray-300 rounded-md py-2 text-white bg-btncolor"
+          >
+            Next
+          </button>
+        </Link>
+      ) : (
+        <button
+          type="button"
+          disabled
+          className="w-full border border-gray-300 rounded-md py-2 text-white bg-btncolor opacity-50 cursor-not-allowed"
+          title="Please fill all required fields"
+        >
+          Next
+        </button>
+      )}
+    </div>
+
+  </div>
+</div>
+
     </>
   );
 };
