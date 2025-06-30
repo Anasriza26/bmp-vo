@@ -14,14 +14,14 @@ const ProgressStepper: React.FC<ProgressStepperProps> = ({
   steps,
 }) => {
   return (
-    <div className="flex flex-wrap justify-between items-center w-full max-w-4xl mx-auto px-2 sm:px-4">
+    <div className="flex flex-wrap justify-between items-center w-full max-w-4xl mx-auto">
       {steps.map((step, index) => {
         const stepNumber = index + 1;
         const isCompleted = stepNumber < currentStep;
         const isActive = stepNumber === currentStep;
 
         return (
-          <div key={index} className="relative flex flex-col items-center flex-1 min-w-[60px]">
+          <div key={index} className="relative flex flex-col items-center flex-1 min-w-[62px]">
             {/* Left line */}
             {index !== 0 && (
               <div className="absolute left-0 top-5 w-full h-0.5 bg-gray-300 z-0 -translate-x-1/2">
@@ -35,7 +35,7 @@ const ProgressStepper: React.FC<ProgressStepperProps> = ({
             <div
               className={`flex items-center justify-center rounded-full border-2 
                 text-xs sm:text-sm md:text-base font-semibold z-10
-                w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12
+                w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 
                 ${isCompleted
                   ? "bg-green-600 border-green-600 text-white"
                   : isActive
@@ -48,7 +48,7 @@ const ProgressStepper: React.FC<ProgressStepperProps> = ({
 
             {/* Label */}
             <div
-              className={`mt-2 text-center text-[10px] sm:text-xs md:text-sm w-full
+              className={`text-center text-[5px] sm:text-xs md:text-sm w-full pt-1
                 ${isCompleted || isActive ? "text-green-600" : "text-gray-500"}
               `}
             >
