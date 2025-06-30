@@ -6,6 +6,7 @@ import Image from "next/image";
 import Logo from "../public/BMP-Logo.jpg";
 import GoogleIcon from "../public/google-icon.jpg";
 import Link from "next/link";
+import CommonFooter from "@/components/common/CommonFooter";
 
 export default function Home() {
   const router = useRouter();
@@ -162,30 +163,7 @@ export default function Home() {
         </div>
       </div>
 
-      {/* <div className="absolute bottom-2 sm:bottom-4 left-1/2 -translate-x-1/2 text-center text-[10px] sm:text-xs text-gray-500 w-[95vw] max-w-lg font-inter font-semibold leading-tight tracking-normal px-1 sm:px-2">
-        <p>
-          BookMyPlay uses cookies for analytics, personalized content, and ads.
-          <br />
-          By using Scale's services you agree to this use of cookies.{" "}
-          <Link href="#" className="underline">
-            Learn more
-          </Link>
-        </p>
-      </div> */}
-
-      <div className="absolute bottom-2 sm:bottom-4 left-1/2 -translate-x-1/2 text-center text-[8px] sm:text-xs text-gray-500 w-[95vw] max-w-lg font-regular leading-tight px-1 sm:px-2 md:text-[10px]">
-        <p>
-          BookMyPlay uses cookies for analytics, personalized content, and ads.
-          By using BookMyPlay's services, you agree to this use of cookies.{" "}
-          <Link
-            href="#"
-            className="underline"
-            aria-label="Learn more about our cookie policy"
-          >
-            Learn more
-          </Link>
-        </p>
-      </div>
+     <CommonFooter />
     </main>
   );
 }
