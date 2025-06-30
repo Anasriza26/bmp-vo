@@ -319,49 +319,46 @@ const List: React.FC = () => {
 
       {/* Button Section */}
       <div className="max-w-6xl mx-auto p-4 space-y-6 mt-5">
-  <div className="flex flex-row sm:grid sm:grid-cols-3 gap-4">
-    
-    {/* Back Button */}
-    <div className="flex-1">
-      <button
-        type="button"
-        className="w-full border rounded-md py-2 text-btncolor border-btncolor"
-      >
-        Back
-      </button>
-    </div>
+        <div className="flex flex-row sm:grid sm:grid-cols-3 gap-4">
+          {/* Back Button */}
+          <div className="flex-1">
+            <button
+              type="button"
+              className="w-full border rounded-md py-2 text-btncolor border-btncolor"
+            >
+              Back
+            </button>
+          </div>
 
-    {/* Placeholder for Center (Hidden on Mobile) */}
-    <div className="hidden sm:block">
-      <div className="relative">{/* Add something here if needed */}</div>
-    </div>
+          {/* Placeholder for Center (Hidden on Mobile) */}
+          <div className="hidden sm:block">
+            <div className="relative">{/* Add something here if needed */}</div>
+          </div>
 
-    {/* Next Button */}
-    <div className="flex-1">
-      {isFormValid() ? (
-        <Link href="/owner-documentation">
-          <button
-            type="button"
-            className="w-full border border-gray-300 rounded-md py-2 text-white bg-btncolor"
-          >
-            Next
-          </button>
-        </Link>
-      ) : (
-        <button
-          type="button"
-          disabled
-          className="w-full border border-gray-300 rounded-md py-2 text-white bg-btncolor opacity-50 cursor-not-allowed"
-          title="Please fill all required fields"
-        >
-          Next
-        </button>
-      )}
-    </div>
-
-  </div>
-</div>
-
+          {/* Next Button */}
+          <div className="flex-1">
+            {isFormValid() ? (
+              <Link href="/owner-documentation">
+                <button
+                  type="button"
+                  className="w-full border border-gray-300 rounded-md py-2 text-white bg-btncolor"
+                >
+                  Next
+                </button>
+              </Link>
+            ) : (
+              <button
+                type="button"
+                disabled
+                className="w-full border border-gray-300 rounded-md py-2 text-white bg-btncolor opacity-50 cursor-not-allowed"
+                title="Please fill all required fields"
+              >
+                Next
+              </button>
+            )}
+          </div>
+        </div>
+      </div>
     </>
   );
 };
