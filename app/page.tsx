@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
@@ -16,7 +16,7 @@ export default function Home() {
 
   const validCredentials = {
     email: "user@example.com",
-    password: "password123"
+    password: "password123",
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -48,7 +48,7 @@ export default function Home() {
       className="flex justify-center items-center h-screen max-h-screen overflow-hidden bg-cover bg-center relative px-2 sm:px-4"
       style={{ backgroundImage: "url('/bg-img.jpg')" }}
     >
-      <div className="w-full max-w-[95vw] sm:max-w-md md:max-w-lg lg:max-w-xl bg-white bg-opacity-90 rounded-xl p-4 sm:p-8 md:p-4">
+      <div className="w-full max-w-[95vw] sm:max-w-md md:max-w-lg lg:max-w-xl bg-white bg-opacity-90 rounded-xl p-4 sm:p-8 md:p-4 md:mb-12">
         <Image
           src={Logo}
           alt="BookMyPlay Logo"
@@ -162,12 +162,26 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="absolute bottom-2 sm:bottom-4 left-1/2 -translate-x-1/2 text-center text-[10px] sm:text-xs text-gray-500 w-[95vw] max-w-lg font-inter font-semibold leading-tight tracking-normal px-1 sm:px-2">
+      {/* <div className="absolute bottom-2 sm:bottom-4 left-1/2 -translate-x-1/2 text-center text-[10px] sm:text-xs text-gray-500 w-[95vw] max-w-lg font-inter font-semibold leading-tight tracking-normal px-1 sm:px-2">
         <p>
           BookMyPlay uses cookies for analytics, personalized content, and ads.
           <br />
           By using Scale's services you agree to this use of cookies.{" "}
           <Link href="#" className="underline">
+            Learn more
+          </Link>
+        </p>
+      </div> */}
+
+      <div className="absolute bottom-2 sm:bottom-4 left-1/2 -translate-x-1/2 text-center text-[8px] sm:text-xs text-gray-500 w-[95vw] max-w-lg font-regular leading-tight px-1 sm:px-2 md:text-[10px]">
+        <p>
+          BookMyPlay uses cookies for analytics, personalized content, and ads.
+          By using BookMyPlay's services, you agree to this use of cookies.{" "}
+          <Link
+            href="#"
+            className="underline"
+            aria-label="Learn more about our cookie policy"
+          >
             Learn more
           </Link>
         </p>
