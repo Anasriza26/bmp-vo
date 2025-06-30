@@ -1,7 +1,8 @@
-import React from "react";
+import AdminSports from "@/components/admin/AdminSports";
 
 const Sports = () => {
-  return <></>;
+  return <>
+  <AdminSports /></>;
 };
 
 export default Sports;
