@@ -120,7 +120,7 @@ export default function Register() {
 
   return (
     <>
-      <div className="flex justify-center mt-[40px]">
+      <div className="flex justify-center mt-4 mx-4 md:mt-8">
         <form
           className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl w-full"
           onSubmit={handleSubmit}
