@@ -1,12 +1,18 @@
-'use client';
+"use client";
 
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { Clock } from "lucide-react";
-import Logo from "../assets/BMP-Logo.jpg";
 import ProgressStepper from "../progress-stepper/Progress";
+import CommonLogo from "../common/CommonLogo";
+
+import {
+  Select,
+  SelectTrigger,
+  SelectValue,
+  SelectContent,
+  SelectItem,
+} from "@/components/ui/select";
 
 interface TimeRow {
   id: number;
@@ -55,158 +61,178 @@ const Timeslot = () => {
     setTimeRows(timeRows.filter((row) => row.id !== id));
   };
 
-  const handleNext = () => {
-    if (timeRows.length === 0) {
-      setShowValidation(true);
-      alert("Please add at least one time slot before proceeding.");
-      return;
-    }
-    // Navigation will proceed if validation passes
+  const isFormValid = () => {
+    return timeRows.length > 0;
   };
 
   return (
     <>
-      <div>
-        <div className="mt-[60px] ml-[60px]">
-          <Image src={Logo} alt="Owner Details" width={133} height={42} />
-        </div>
+      <CommonLogo />
 
-        <div className="font-semibold">
-          <ProgressStepper
-            currentStep={4.5}
-            steps={[
-              { label: "Account Setup" },
-              { label: "Turf Information" },
-              { label: "Business Details" },
-              { label: "Scheduling & Rates" },
-              { label: "Payment & Completion" },
-            ]}
-          />
-        </div>
+      <div className="font-semibold mt-2">
+        <ProgressStepper
+          currentStep={4.5}
+          steps={[
+            { label: "Account Setup" },
+            { label: "Turf Information" },
+            { label: "Business Details" },
+            { label: "Scheduling & Rates" },
+            { label: "Payment & Completion" },
+          ]}
+        />
+      </div>
 
-        <div className="justify-center items-center flex flex-col mt-[40px]">
-          <h2 className="font-semibold text-2xl font-inter text-center">
-            Set your operating hours
-          </h2>
-          <p className="font-normal text-[#667085] mt-[10px] text-center">
-            Define when your facility is open for bookings and set <br /> your
-            base pricing structure.
-          </p>
-        </div>
+      <div className="justify-center items-center flex flex-col mt-4">
+        <h2 className="font-semibold text-xl font-inter text-center md:text-2xl">
+          Set your operating hours
+        </h2>
+        <p className="font-normal text-[#667085] mt-1 text-center md:text-[14px] text-8px">
+          Define when your facility is open for bookings and set your base
+          pricing structure.
+        </p>
+      </div>
 
-        <div className="bg-white p-6 max-w-4xl mx-auto space-y-4 flex flex-col items-center">
-          <div className="flex flex-wrap gap-6 items-center mb-4 justify-center">
-            <div className="relative">
-              <Clock className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-green-600" />
-              <select
-                value={startTime}
-                onChange={(e) => setStartTime(e.target.value)}
-                className="border border-green-600 rounded-md pl-10 pr-4 py-2 text-green-600 font-semibold text-sm min-w-[140px] cursor-pointer appearance-none"
-              >
-                <option value="" disabled>
-                  Start Time
-                </option>
+      <div className="bg-white max-w-4xl mx-auto space-y-4 flex flex-col items-center py-4">
+        {/* Time Selector */}
+        <div className="flex flex-wrap sm:flex-nowrap gap-2 sm:gap-4 items-center justify-center">
+          {/* Start Time */}
+          <div className="w-[110px] sm:w-[140px] relative">
+            <Select value={startTime} onValueChange={setStartTime}>
+              <SelectTrigger className="pl-8">
+                <Clock className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-green-600" />
+                <SelectValue placeholder="Start time" />
+              </SelectTrigger>
+              <SelectContent>
                 {timeOptions.map((time) => (
-                  <option key={time} value={time}>
+                  <SelectItem key={time} value={time}>
                     {time}
-                  </option>
+                  </SelectItem>
                 ))}
-              </select>
-            </div>
+              </SelectContent>
+            </Select>
+          </div>
 
-            <div className="relative">
-              <Clock className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-green-600" />
-              <select
-                value={endTime}
-                onChange={(e) => setEndTime(e.target.value)}
-                className="border border-green-600 rounded-md pl-10 pr-4 py-2 text-green-600 font-semibold text-sm min-w-[140px] cursor-pointer appearance-none"
-              >
-                <option value="" disabled>
-                  End Time
-                </option>
+          {/* End Time */}
+          <div className="w-[110px] sm:w-[140px] relative">
+            <Select value={endTime} onValueChange={setEndTime}>
+              <SelectTrigger className="pl-8">
+                <Clock className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-green-600" />
+                <SelectValue placeholder="End time" />
+              </SelectTrigger>
+              <SelectContent>
                 {timeOptions.map((time) => (
-                  <option key={time} value={time}>
+                  <SelectItem key={time} value={time}>
                     {time}
-                  </option>
+                  </SelectItem>
                 ))}
-              </select>
-            </div>
+              </SelectContent>
+            </Select>
+          </div>
 
-            <button
-              onClick={handleAdd}
-              className="bg-green-600 text-white rounded-md px-6 py-2 font-semibold text-sm min-w-[100px]"
+          {/* Add Button */}
+          <button
+            onClick={handleAdd}
+            className="bg-green-600 text-white rounded-md 
+            px-3 py-1.5 
+            text-xs sm:text-sm 
+            w-[70px] sm:w-[100px]
+            font-semibold"
+          >
+            Add
+          </button>
+        </div>
+
+        {/* Validation Message */}
+        {showValidation && timeRows.length === 0 && (
+          <div className="text-red-600 text-sm text-center">
+            Please add at least one time slot to continue.
+          </div>
+        )}
+
+        {/* Selected Time Rows */}
+        <div className="space-y-2">
+          {timeRows.map((row) => (
+            <div
+              key={row.id}
+              className="flex flex-wrap sm:flex-nowrap gap-2 sm:gap-4 items-center justify-center"
             >
-              Add
+              <button
+                type="button"
+                className="border border-green-600 rounded-md 
+                pl-8 pr-3 py-1.5 text-green-600 font-semibold 
+                text-xs sm:text-sm 
+                w-[110px] sm:w-[140px] 
+                cursor-default relative"
+              >
+                <Clock className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-green-600" />
+                {row.start}
+              </button>
+
+              <button
+                type="button"
+                className="border border-green-600 rounded-md 
+                pl-8 pr-3 py-1.5 text-green-600 font-semibold 
+                text-xs sm:text-sm 
+                w-[110px] sm:w-[140px] 
+                cursor-default relative"
+              >
+                <Clock className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-green-600" />
+                {row.end}
+              </button>
+
+              <button
+                onClick={() => handleDelete(row.id)}
+                className="border border-red-600 text-red-600 rounded-md
+                px-3 py-1.5 
+                text-xs sm:text-sm 
+                w-[70px] sm:w-[100px] 
+                font-semibold"
+              >
+                Delete
+              </button>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="max-w-6xl mx-auto p-4 space-y-6 mt-1">
+        <div className="flex flex-row sm:grid sm:grid-cols-3 gap-4">
+          {/* Back Button */}
+          <div className="flex-1">
+            <button
+              type="button"
+              className="w-full border rounded-md py-2 text-btncolor border-btncolor"
+            >
+              Back
             </button>
           </div>
 
-          {showValidation && timeRows.length === 0 && (
-            <div className="text-red-600 text-sm text-center mb-4">
-              Please add at least one time slot to continue.
-            </div>
-          )}
-
-          <div className="space-y-2">
-            {timeRows.map((row) => (
-              <div key={row.id} className="flex flex-wrap gap-6 items-center justify-center">
-                <button
-                  type="button"
-                  className="flex items-center gap-2 border border-gray-300 rounded-md px-4 py-2 text-gray-700 font-normal text-sm min-w-[140px] justify-center"
-                >
-                  <Clock className="w-4 h-4" /> {row.start}
-                </button>
-                <button
-                  type="button"
-                  className="flex items-center gap-2 border border-gray-300 rounded-md px-4 py-2 text-gray-700 font-normal text-sm min-w-[140px] justify-center"
-                >
-                  <Clock className="w-4 h-4" /> {row.end}
-                </button>
-                <button
-                  onClick={() => handleDelete(row.id)}
-                  className="border border-red-600 text-red-600 rounded-md px-6 py-2 font-semibold text-sm min-w-[100px]"
-                >
-                  Delete
-                </button>
-              </div>
-            ))}
+          {/* Placeholder for Center */}
+          <div className="hidden sm:block">
+            <div className="relative"></div>
           </div>
-        </div>
 
-        <div className="max-w-7xl mx-auto p-4 space-y-10 mt-[100px]">
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 ">
-            <div className="relative">
-              <button
-                type="button"
-                className="w-full border rounded-md py-2 text-btncolor border-btncolor "
-              >
-                Back
-              </button>
-            </div>
-            <div>
-              <div className="relative">
-                {/* Placeholder for additional content or input */}
-              </div>
-            </div>
-            <div>
-              {timeRows.length > 0 ? (
-                <Link href="/week-rate">
-                  <button
-                    type="button"
-                    className="w-full border border-gray-300 rounded-md py-2 text-white bg-btncolor"
-                  >
-                    Next
-                  </button>
-                </Link>
-              ) : (
+          {/* Next Button */}
+          <div className="flex-1">
+            {isFormValid() ? (
+              <Link href="/week-rate">
                 <button
                   type="button"
-                  onClick={handleNext}
-                  className="w-full border border-gray-300 rounded-md py-2 text-white bg-btncolor opacity-75"
+                  className="w-full border border-gray-300 rounded-md py-2 text-white bg-btncolor"
                 >
                   Next
                 </button>
-              )}
-            </div>
+              </Link>
+            ) : (
+              <button
+                type="button"
+                disabled
+                className="w-full border border-gray-300 rounded-md py-2 text-white bg-btncolor opacity-50 cursor-not-allowed"
+                title="Please fill all required fields"
+              >
+                Next
+              </button>
+            )}
           </div>
         </div>
       </div>
