@@ -7,8 +7,8 @@ import SearchSheet from "./SearchSheet";
 const SearchButton = () => (
   <>
     <div className="relative md:block hidden">
-      <Button className="w-full pl-12 pr-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2  bg-white text-green-600 ">
-        <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-green-600 w-5 h-5 hover:text-white" />
+      <Button className="group relative w-full pl-12 pr-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 bg-white text-green-600">
+        <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-green-600 group-hover:text-white transition-colors" />
         Make Your play
       </Button>
     </div>
