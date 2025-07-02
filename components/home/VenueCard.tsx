@@ -23,7 +23,7 @@ const VenueCard = ({ venue }: { venue: Venue }) => (
     </div>
     <div className="p-4 sm:p-5 md:p-6">
       <div className="flex items-center justify-between mb-1 sm:mb-2">
-        <h3 className="text-lg sm:text-xl font-semibold text-[#25A359] line-clamp-1">
+        <h3 className="text-lg sm:text-xl font-semibold text-primary line-clamp-1">
           {venue.name}
         </h3>
         <div className="flex items-center">
@@ -70,7 +70,7 @@ const VenueCard = ({ venue }: { venue: Venue }) => (
           </div>
         </div>
         <Link href={`/ground-details/${venue.id}`}>
-          <button className="flex-col w-full sm:w-full bg-[#25A359] text-white px-4 py-2 sm:px-4 sm:py-2 rounded-lg md:rounded-xl font-medium hover:from-teal-600 hover:to-green-600 transition-all duration-200 hover:scale-105 shadow-md md:shadow-lg text-sm sm:text-base whitespace-nowrap">
+          <button className="flex-col w-full sm:w-full bg-primary text-white px-4 py-2 sm:px-4 sm:py-2 rounded-lg md:rounded-xl font-medium hover:from-teal-600 hover:to-green-600 transition-all duration-200 hover:scale-105 shadow-md md:shadow-lg text-sm sm:text-base whitespace-nowrap">
             Book Slots
           </button>
         </Link>

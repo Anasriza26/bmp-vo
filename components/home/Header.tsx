@@ -38,7 +38,7 @@ const Header = () => {
             </div>
 
             {/* Bell Icon */}
-            <button className="relative p-2 text-gray-600 hover:text-[#25A359] transition-colors">
+            <button className="relative p-2 text-gray-600 hover:text-primary transition-colors">
               <Bell className="w-6 h-6" />
               <span className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full" />
             </button>

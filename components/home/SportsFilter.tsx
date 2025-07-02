@@ -17,31 +17,30 @@ interface Props {
 
 const SportsFilter = ({ selectedSport, setSelectedSport }: Props) => {
   return (
-    <div className="mb-8">
-
+    <div className="my-4">
       {/* Mobile - Horizontal Slider */}
-      <div className="md:hidden flex overflow-x-auto no-scrollbar pb-4 px-4 space-x-4">
+      <div className="md:hidden grid grid-cols-5">
         {sports.map((sport) => (
           <button
             key={sport.name}
             onClick={() => setSelectedSport(sport.name)}
-            className={`flex-shrink-0 flex flex-col items-center p-4 rounded-2xl min-w-[100px] ${
+            className={`flex flex-col items-center rounded-md p-2 justify-between ${
               selectedSport === sport.name
-                ? "bg-[#25A359] text-white shadow-lg scale-105"
-                : "bg-transparent text-gray-600 hover:bg-gray-50 hover:scale-105"
+                ? "bg-primary text-white"
+                : "bg-transparent text-gray-600 hover:bg-gray-5"
             }`}
           >
-            <span className="text-2xl mb-2">
+            <span className="text-sm">
               {" "}
               <Image
                 src={sport.icon}
                 alt={`${sport.name} icon`}
-                width={40}
-                height={40}
-                className="w-10 h-10"
+                width={35}
+                height={35}
+                className=""
               />
             </span>
-            <span className="text-sm font-medium">{sport.name}</span>
+            <span className="text-[12px] font-semibold">{sport.name}</span>
           </button>
         ))}
       </div>
@@ -54,7 +53,7 @@ const SportsFilter = ({ selectedSport, setSelectedSport }: Props) => {
             onClick={() => setSelectedSport(sport.name)}
             className={`flex flex-col items-center p-6 rounded-2xl w-[120px] transition-all duration-200 ${
               selectedSport === sport.name
-                ? "bg-[#25A359] text-white shadow-lg scale-105"
+                ? "bg-primary text-white shadow-lg scale-105"
                 : "bg-white text-gray-600 hover:bg-gray-50"
             }`}
           >
@@ -76,3 +75,6 @@ const SportsFilter = ({ selectedSport, setSelectedSport }: Props) => {
 };
 
 export default SportsFilter;
+
+
+// overflow-x-auto no-scrollbar = overflow

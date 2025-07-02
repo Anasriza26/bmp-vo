@@ -23,9 +23,9 @@ const Home = () => {
   });
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50 to-teal-50">
+    <div className="min-h-screen bg-white">
       <Header />
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-8">
+      <main className="md:max-w-7xl mx-auto  sm:px-6 lg:px-8  md:py-8">
         {/* <div className="md:hidden mb-6">
           <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
         </div> */}

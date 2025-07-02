@@ -109,7 +109,7 @@ export function AppSidebar() {
                       <a
                         href={item.url}
                         className={`flex items-center gap-3 px-3 py-2 rounded-md ${
-                          isActive ? "bg-[#25A359] text-white" : "hover:bg-gray-100"
+                          isActive ? "bg-primary text-white" : "hover:bg-gray-100"
                         }`}
                       >
                         {typeof item.icon === "string" ? (
