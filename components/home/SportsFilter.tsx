@@ -1,5 +1,4 @@
 "use client";
-
 import Image from "next/image";
 
 const sports = [
@@ -12,10 +11,10 @@ const sports = [
 
 interface Props {
   selectedSport: string;
-  setSelectedSport: (sport: string) => void;
+  onSportToggle: (sport: string) => void;
 }
 
-const SportsFilter = ({ selectedSport, setSelectedSport }: Props) => {
+const SportsFilter = ({ selectedSport, onSportToggle }: Props) => {
   return (
     <div className="my-4">
       {/* Mobile - Horizontal Slider */}
@@ -23,15 +22,14 @@ const SportsFilter = ({ selectedSport, setSelectedSport }: Props) => {
         {sports.map((sport) => (
           <button
             key={sport.name}
-            onClick={() => setSelectedSport(sport.name)}
-            className={`flex flex-col items-center rounded-md p-2 justify-between ${
+            onClick={() => onSportToggle(sport.name)}
+            className={`flex flex-col items-center rounded-md p-2 justify-between transition-all duration-200 ${
               selectedSport === sport.name
-                ? "bg-primary text-white"
-                : "bg-transparent text-gray-600 hover:bg-gray-5"
+                ? "bg-primary text-white shadow-md"
+                : "bg-transparent text-gray-600 hover:bg-gray-50"
             }`}
           >
             <span className="text-sm">
-              {" "}
               <Image
                 src={sport.icon}
                 alt={`${sport.name} icon`}
@@ -50,11 +48,11 @@ const SportsFilter = ({ selectedSport, setSelectedSport }: Props) => {
         {sports.map((sport) => (
           <button
             key={sport.name}
-            onClick={() => setSelectedSport(sport.name)}
+            onClick={() => onSportToggle(sport.name)}
             className={`flex flex-col items-center p-6 rounded-2xl w-[120px] transition-all duration-200 ${
               selectedSport === sport.name
                 ? "bg-primary text-white shadow-lg scale-105"
-                : "bg-white text-gray-600 hover:bg-gray-50"
+                : "bg-white text-gray-600 hover:bg-gray-50 border border-gray-200"
             }`}
           >
             <span className="text-3xl mb-2">
@@ -75,6 +73,3 @@ const SportsFilter = ({ selectedSport, setSelectedSport }: Props) => {
 };
 
 export default SportsFilter;
-
-
-// overflow-x-auto no-scrollbar = overflow
