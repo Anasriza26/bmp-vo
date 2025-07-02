@@ -25,7 +25,6 @@ import {
   MapPin,
   Percent,
   User,
-  Settings,
 } from "lucide-react";
 
 const navigationItems = [
@@ -38,24 +37,28 @@ const navigationItems = [
   { title: "Turf", icon: MapPin, page: "turf" },
   { title: "Discounts", icon: Percent, page: "discounts" },
   { title: "Profile", icon: User, page: "profile" },
-  // { title: "Settings", icon: Settings, page: "settings" },
 ];
 
 export default function AppSidebar() {
   const router = useRouter();
   const pathname = usePathname();
 
-  // Get the current page from the path (e.g., "dashboard", "bookings")
   const currentPage = pathname?.split("/")[1] || "";
 
   return (
-    <Sidebar className="border-r border-gray-200">
-      <SidebarHeader className="p-4">
-        <div className="flex items-center gap-2">
-          <div className="w-8 h-8 bg-green-500 rounded flex items-center justify-center">
-             <Image src="/BMP-Logo.jpg" alt="Logo" width={120} height={50} className="w-[120x] h-[50px]" />
-          </div>
-        </div>
+    <Sidebar
+      className="lg:flex flex-col"
+      side="left"
+      variant="inset"
+    >
+      <SidebarHeader>
+        <Image
+          src="/BMP-Logo.jpg"
+          alt="Logo"
+          width={120}
+          height={50}
+          className="m-2"
+        />
       </SidebarHeader>
 
       <SidebarContent>
@@ -64,7 +67,6 @@ export default function AppSidebar() {
             <SidebarMenu>
               {navigationItems.map((item) => {
                 const isActive = currentPage === item.page;
-
                 return (
                   <SidebarMenuItem key={item.title}>
                     <SidebarMenuButton
@@ -89,8 +91,7 @@ export default function AppSidebar() {
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
-
-      <SidebarFooter className="p-4">
+      <SidebarFooter>
         <div className="flex items-center gap-3">
           <Avatar className="w-8 h-8">
             <AvatarImage src="/placeholder.svg?height=32&width=32" />
@@ -100,9 +101,7 @@ export default function AppSidebar() {
             <p className="text-sm font-medium text-gray-900 truncate">
               Mohamed Rishad
             </p>
-            <p className="text-xs text-gray-500 truncate">
-              rishad@gmail.com
-            </p>
+            <p className="text-xs text-gray-500 truncate">rishad@gmail.com</p>
           </div>
         </div>
       </SidebarFooter>
