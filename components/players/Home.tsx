@@ -1,5 +1,4 @@
 "use client";
-
 import React, { useState } from "react";
 import Header from "@/components/home/Header";
 import SearchBar from "@/components/home/SearchButton";
@@ -13,6 +12,17 @@ const Home = () => {
   const [selectedSport, setSelectedSport] = useState("All");
   const [searchTerm, setSearchTerm] = useState("");
 
+  // Toggle function for sports filter
+  const handleSportToggle = (sport: string) => {
+    if (selectedSport === sport) {
+      // If the same sport is clicked, toggle back to "All"
+      setSelectedSport("All");
+    } else {
+      // If a different sport is clicked, select that sport
+      setSelectedSport(sport);
+    }
+  };
+
   const filteredVenues = venues.filter((venue) => {
     const matchesSport =
       selectedSport === "All" || venue.sport === selectedSport;
@@ -25,13 +35,13 @@ const Home = () => {
   return (
     <div className="min-h-screen bg-white">
       <Header />
-      <main className="md:max-w-7xl mx-auto  sm:px-6 lg:px-8  md:py-8">
+      <main className="md:max-w-7xl mx-auto sm:px-6 lg:px-8 md:py-8">
         {/* <div className="md:hidden mb-6">
           <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
         </div> */}
         <SportsFilter
           selectedSport={selectedSport}
-          setSelectedSport={setSelectedSport}
+          onSportToggle={handleSportToggle}
         />
         {filteredVenues.length > 0 ? (
           <VenueGrid venues={filteredVenues} selectedSport={selectedSport} />
