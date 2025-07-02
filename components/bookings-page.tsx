@@ -1,146 +1,61 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { Search, Calendar, Filter, ChevronLeft, ChevronRight } from "lucide-react"
-import { Card, CardContent } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
-import CommonTable from "./common/CommonTable"
-import CommonHeader from "./common/CommonHeader"
-
-const columns = [
-  { label: "Date", key: "date" },
-  { label: "Status", key: "status" },
-  { label: "Customer", key: "customer" },
-  { label: "Time Slot", key: "timeSlot" },
-  { label: "Amount", key: "amount" },
-  { label: "Actions", key: "buttons" },
-];
-
-
-const bookingsData = [
-  {
-    id: 1,
-    date: "Jan 6, 2022",
-    status: "Paid",
-    customer: { name: "Olivia Rhye", phone: "0774338424" },
-    timeSlot: "08:00 AM",
-    amount: "3500.00",
-  },
-  {
-    id: 2,
-    date: "Jan 6, 2022",
-    status: "Paid",
-    customer: { name: "Phoenix Baker", phone: "0774338424" },
-    timeSlot: "08:00 AM",
-    amount: "3500.00",
-  },
-  {
-    id: 3,
-    date: "Jan 6, 2022",
-    status: "Paid",
-    customer: { name: "Lana Steiner", phone: "0774338424" },
-    timeSlot: "08:00 AM",
-    amount: "3500.00",
-  },
-  {
-    id: 4,
-    date: "Jan 5, 2022",
-    status: "Paid",
-    customer: { name: "Demi Wilkinson", phone: "0774338424" },
-    timeSlot: "08:00 AM",
-    amount: "3500.00",
-  },
-  {
-    id: 5,
-    date: "Jan 5, 2022",
-    status: "Refunded",
-    customer: { name: "Candice Wu", phone: "0774338424" },
-    timeSlot: "08:00 AM",
-    amount: "3500.00",
-  },
-  {
-    id: 6,
-    date: "Jan 5, 2022",
-    status: "Paid",
-    customer: { name: "Natali Craig", phone: "0774338424" },
-    timeSlot: "08:00 AM",
-    amount: "3500.00",
-  },
-  {
-    id: 7,
-    date: "Jan 4, 2022",
-    status: "Cancelled",
-    customer: { name: "Drew Cano", phone: "0774338424" },
-    timeSlot: "08:00 AM",
-    amount: "3500.00",
-  },
-  {
-    id: 8,
-    date: "Jan 3, 2022",
-    status: "Paid",
-    customer: { name: "Orlando Diggs", phone: "0774338424" },
-    timeSlot: "08:00 AM",
-    amount: "3500.00",
-  },
-  {
-    id: 9,
-    date: "Jan 4, 2022",
-    status: "Paid",
-    customer: { name: "Anas Riza", phone: "0754121698" },
-    timeSlot: "08:00 AM",
-    amount: "3500.00",
-  },
-]
-
-const StatusBadge = ({ status }: { status: string }) => {
-  const getStatusStyles = (status: string) => {
-    switch (status) {
-      case "Paid":
-        return "bg-green-100 text-green-700 border-green-200"
-      case "Refunded":
-        return "bg-gray-100 text-gray-700 border-gray-200"
-      case "Cancelled":
-        return "bg-red-100 text-red-700 border-red-200"
-      default:
-        return "bg-gray-100 text-gray-700 border-gray-200"
-    }
-  }
-
-  const getStatusIcon = (status: string) => {
-    switch (status) {
-      case "Paid":
-        return "✓"
-      case "Refunded":
-        return "↩"
-      case "Cancelled":
-        return "✕"
-      default:
-        return ""
-    }
-  }
-
-  return (
-    <span
-      className={`inline-flex items-center gap-1 px-2 py-1 rounded-md text-xs font-medium border ${getStatusStyles(
-        status,
-      )}`}
-    >
-      <span>{getStatusIcon(status)}</span>
-      {status}
-    </span>
-  )
-}
+import { useState } from "react";
+import {
+  Search,
+  Calendar,
+  Filter,
+  ChevronLeft,
+  ChevronRight,
+  Trash2,
+  Edit,
+  Eye,
+} from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import CommonHeader from "./common/CommonHeader";
+import CustomTable from "./admin/admin-helper/Table";
 
 export function BookingsPage() {
-  const [currentPage, setCurrentPage] = useState(1)
-  const [searchTerm, setSearchTerm] = useState("")
+  const [currentPage, setCurrentPage] = useState(1);
+  const [searchTerm, setSearchTerm] = useState("");
 
-  const totalPages = 10
+  const headers = [
+    { label: "Date", className: "" },
+    { label: "Status", className: "" },
+    { label: "Customer", className: "" },
+    { label: "Time slot", className: "" },
+    { label: "Amount", className: "" },
+  ];
+
+  const rows = [
+    {
+      cells: [
+        { content: "2025.09.21" }, // Name
+        { content: "Paid" }, // Wallet
+        { content: "rizanas  0754121698", className: "" }, // Amount
+        { content: "12:00" },
+        { content: "$250" }, 
+      ],
+      actions: (
+        <div className="flex justify-end gap-2">
+          <Button variant="outline" size="sm">
+            <Edit className="w-4 h-4 mr-1" />
+            Edit
+          </Button>
+          <Button variant="destructive" size="sm">
+            <Trash2 className="w-4 h-4 mr-1" />
+            Delete
+          </Button>
+        </div>
+      ),
+    },
+  ];
+
+  const totalPages = 10;
 
   return (
-    <div className="flex flex-col w-full">
+    <div className="flex flex-col w-full py-4 px-4 max-w-[100vw] overflow-x-hidden md:overflow-hidden">
       {/* Header */}
       <CommonHeader
         title="Manage Bookings"
@@ -148,38 +63,47 @@ export function BookingsPage() {
       />
 
       {/* Main Content */}
-      <main className="flex-1 p-6 w-full">
+      <main className="flex-1 w-full max-w-[100vw] overflow-x-hidden">
         {/* Filters and Search */}
-        <div className="flex flex-col sm:flex-row gap-4 mb-6 w-full">
-          <div className="relative flex-1">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4 hover:bg-white" />
+        <div className="flex flex-col sm:flex-row gap-4 my-4 w-full">
+          <div className="relative w-full sm:flex-1">
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
             <Input
               placeholder="Search booking"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="pl-10"
+              className="pl-10 w-full"
             />
           </div>
-          <div className="flex gap-2">
-            <Button variant="outline" className="flex items-center gap-2">
-              <Calendar className="w-4 h-4" />
-              Jan 6, 2022 – Jan 13, 2022
+          <div className="flex gap-1 w-full sm:w-auto">
+            <Button
+              variant="outline"
+              className="flex items-center w-full sm:w-auto"
+            >
+              <Calendar className="w-4 h-4 mr-2" />
+              <span className="whitespace-nowrap">
+                Jan 6, 2022 – Jan 13, 2022
+              </span>
             </Button>
-            <Button variant="outline" className="flex items-center gap-2">
-              <Filter className="w-4 h-4" />
+            <Button
+              variant="outline"
+              className="flex items-center w-full sm:w-auto"
+            >
+              <Filter className="w-4 h-4 mr-2" />
               Filters
             </Button>
           </div>
         </div>
 
         {/* Bookings Table */}
-       <CommonTable
-         bookingsData={bookingsData.map(b => ({ ...b, id: String(b.id) }))}
-         columns={columns}
-       />
+        <div className="w-full rounded-md border overflow-hidden">
+          <div className="w-full overflow-x-auto">
+            <CustomTable headers={headers} rows={rows} />
+          </div>
+        </div>
 
         {/* Pagination */}
-        <div className="flex items-center justify-between mt-6">
+        <div className="flex justify-between items-center mt-6 w-full">
           <Button
             variant="outline"
             className="flex items-center gap-2"
@@ -187,21 +111,23 @@ export function BookingsPage() {
             onClick={() => setCurrentPage(Math.max(1, currentPage - 1))}
           >
             <ChevronLeft className="w-4 h-4" />
-            Previous
+            <span className="hidden sm:inline">Previous</span>
           </Button>
 
-          <div className="flex items-center gap-1">
+          <div className="flex items-center gap-1 mx-2 overflow-x-auto py-2">
             {[1, 2, 3, "...", 8, 9, 10].map((page, index) => (
               <Button
                 key={index}
                 variant={currentPage === page ? "default" : "ghost"}
                 size="sm"
-                className={`w-8 h-8 p-0 ${
+                className={`min-w-[32px] h-8 p-0 ${
                   currentPage === page
                     ? "bg-green-500 hover:bg-green-600 text-white"
                     : "text-gray-600 hover:text-gray-900"
                 }`}
-                onClick={() => typeof page === "number" && setCurrentPage(page)}
+                onClick={() =>
+                  typeof page === "number" && setCurrentPage(page)
+                }
                 disabled={page === "..."}
               >
                 {page}
@@ -213,13 +139,15 @@ export function BookingsPage() {
             variant="outline"
             className="flex items-center gap-2"
             disabled={currentPage === totalPages}
-            onClick={() => setCurrentPage(Math.min(totalPages, currentPage + 1))}
+            onClick={() =>
+              setCurrentPage(Math.min(totalPages, currentPage + 1))
+            }
           >
-            Next
+            <span className="hidden sm:inline">Next</span>
             <ChevronRight className="w-4 h-4" />
           </Button>
         </div>
       </main>
     </div>
-  )
+  );
 }
