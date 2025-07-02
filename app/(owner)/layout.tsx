@@ -1,22 +1,16 @@
+import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import AppSidebar from "@/components/common/Sidebar";
-import SidebarLayoutClient from "@/components/layouts/SidebarLayoutClient";
-import {
-  Sidebar,
-  SidebarInset,
-  SidebarProvider,
-} from "@/components/ui/sidebar";
 
-export default function DashboardLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <SidebarProvider>
-      <AppSidebar />
-      {/* <SidebarInset> */}
-        <main className="flex flex-col w-full">{children}</main>
-      {/* </SidebarInset> */}
+    <SidebarProvider  >
+        <AppSidebar />
+        <main className="flex flex-col  bg-white w-full mx-4">
+          <SidebarTrigger className="absolute right-4 top-4 p-2 border rounded-lg lg:hidden" />
+          {children}
+        </main>
     </SidebarProvider>
   );
 }
+
+// mx-2 md:mx-3 lg:mx-4
