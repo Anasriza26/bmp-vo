@@ -10,7 +10,6 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-// 🔥 Generate hours-only time slots (no 30-min gap)
 function generateHourSlots() {
   const times: string[] = [];
   const start = 6; // 6 AM
@@ -42,7 +41,7 @@ export default function TimeSelector({
   };
 
   return (
-    <div className="flex flex-col sm:flex-row gap-4 w-full md:pt-4">
+    <div className="grid grid-cols-2 gap-2 md:mt-[2px]">
       {["Start", "End"].map((label, i) => {
         const selected = i === 0 ? startTime : endTime;
         const setSelected = i === 0 ? setStartTime : setEndTime;
@@ -55,8 +54,8 @@ export default function TimeSelector({
         };
 
         return (
-          <div key={label} className="w-full sm:w-1/2">
-            <label className="block text-sm font-medium mb-2">
+          <div key={label} className="">
+            <label className="block text-sm font-semibold mb-2 mt:mb-3 md:text-base">
               {label} Time
             </label>
             <Select
@@ -70,10 +69,13 @@ export default function TimeSelector({
                 }
               }}
             >
-              <SelectTrigger className="w-full h-12 bg-green-500 text-white border-green-500 hover:bg-green-600">
-                <div className="flex items-center gap-2">
+              <SelectTrigger className="h-auto bg-green-500 text-white border-green-500 hover:bg-green-600">
+                <div className=" flex items-center gap-1">
                   <Clock className="w-4 h-4" />
-                  <SelectValue placeholder={`Select ${label.toLowerCase()} time`} />
+                  <SelectValue
+                    placeholder={`Select ${label.toLowerCase()} time`}
+                    className=""
+                  />
                 </div>
               </SelectTrigger>
               <SelectContent>
