@@ -34,7 +34,7 @@ const BottomNavigation = () => {
             <span className="text-xs mt-1">My Booking</span>
           </Link>
 
-           {/* Settings */}
+           {/* Notification */}
           <Link href="/notificatiion" className="flex flex-col items-center text-center">
             <Bell className="h-5 w-5" />
             <span className="text-xs mt-1">Notification</span>
