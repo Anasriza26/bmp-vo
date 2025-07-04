@@ -1,6 +1,6 @@
 "use client";
 
-import { Search, Calendar, User, Settings } from "lucide-react";
+import { Search, Calendar, User, Settings, House,Bell } from "lucide-react";
 import Link from "next/link";
 import { Button } from "../ui/button";
 import SearchSheet from "./SearchSheet";
@@ -11,8 +11,16 @@ const BottomNavigation = () => {
     <>
       <div className="fixed bottom-0 left-0 right-0 z-50 bg-white border-t shadow-md md:hidden">
         <div className="flex justify-around py-2">
-          {/* Search */}
+          {/* Home Page */}
+          <Link
+            href="/home"
+            className="flex flex-col items-center text-center"
+          >
+            <House className="h-5 w-5" />
+            <span className="text-xs mt-1">Home</span>
+          </Link>
 
+          {/* Search */}
           <button className="flex flex-col items-center text-center">
             <SearchSheet />
           </button>
@@ -26,6 +34,12 @@ const BottomNavigation = () => {
             <span className="text-xs mt-1">My Booking</span>
           </Link>
 
+           {/* Settings */}
+          <Link href="/notificatiion" className="flex flex-col items-center text-center">
+            <Bell className="h-5 w-5" />
+            <span className="text-xs mt-1">Notification</span>
+          </Link>
+
           {/* Profile */}
           <Link
             href="/player-profile"
@@ -35,11 +49,7 @@ const BottomNavigation = () => {
             <span className="text-xs mt-1">Profile</span>
           </Link>
 
-          {/* Settings */}
-          <Link href="" className="flex flex-col items-center text-center">
-            <Settings className="h-5 w-5" />
-            <span className="text-xs mt-1">Settings</span>
-          </Link>
+         
         </div>
       </div>
     </>
