@@ -10,19 +10,17 @@ import LocationSelector from "../search/LocationSelector";
 import ActionButtons from "../search/ActionButtons";
 
 const Search = () => {
-  const today = new Date().toISOString().split('T')[0];
+  const today = new Date().toISOString().split("T")[0];
   const [selectedSport, setSelectedSport] = useState("");
   const [selectedDate, setSelectedDate] = useState(today);
   const [startTime, setStartTime] = useState("08:00 PM");
   const [endTime, setEndTime] = useState("10:00 PM");
   const [location, setLocation] = useState("Colombo");
 
-
   return (
-    <div className= "mx-auto w-full">
-      <CardContent className="space-y-8 mt-4">
-
-        <div className="flex flex-col gap-4 md:flex-row">
+    <div className="mx-auto w-full">
+      <CardContent className="mt-2">
+        <div className="grid gap-4 md:grid-cols-2">
           <SportSelector
             selectedSport={selectedSport}
             setSelectedSport={setSelectedSport}
@@ -36,20 +34,16 @@ const Search = () => {
           />
         </div>
 
-        <div className="flex flex-col gap-4 md:flex-row">
-          <DateSelector
-            selectedDate={selectedDate}
-            setSelectedDate={setSelectedDate}
-          />
+      <div className="md:grid md:grid-cols-2 md:gap-2">
+        <DateSelector
+          selectedDate={selectedDate}
+          setSelectedDate={setSelectedDate}
+        />
 
-          <LocationSelector
-            location={location}
-            setLocation={setLocation}
-          />
-
-          <ActionButtons />
+        <LocationSelector location={location} setLocation={setLocation} />
         </div>
 
+        <ActionButtons />
       </CardContent>
     </div>
   );
