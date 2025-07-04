@@ -16,10 +16,10 @@ const dates = Array.from({ length: 7 }, (_, i) => {
 
 export default function DateSelector({ selectedDate, setSelectedDate }: any) {
   return (
-    <div className="space-y-4">
+    <div className="space-y-2">
       {/* Header with text and calendar icon on same line */}
       <div className="flex items-center justify-between">
-        <h3 className="text-lg font-semibold text-gray-900">
+        <h3 className="text-sm font-semibold text-gray-900 md:text-base">
           Select your date
         </h3>
         <Popover>
@@ -46,12 +46,12 @@ export default function DateSelector({ selectedDate, setSelectedDate }: any) {
       </div>
 
       {/* Date selector horizontally scrollable */}
-      <div className="flex gap-2 overflow-x-auto scrollbar-hide w-full">
+      <div className="grid grid-cols-7 gap-1 w-full pb-2 md:pb-0">
         {dates.map((date) => (
           <button
             key={date.fullDate}
             onClick={() => setSelectedDate(date.fullDate)}
-            className={`min-w-[70px] sm:min-w-[80px] md:min-w-[90px] 
+            className={` 
               border rounded-md px-2 py-3 flex flex-col items-center
               ${
                 selectedDate === date.fullDate
