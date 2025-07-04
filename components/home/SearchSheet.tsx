@@ -22,9 +22,9 @@ const SearchSheet = () => {
           <SearchButton />
         </SheetTrigger>
         <SheetContent side="bottom" className="overflow-y-auto max-h-[90vh]">
-          <SheetHeader className="w-full md:px-6">
-            <SheetTitle>Plan your play</SheetTitle>
-            <SheetDescription>
+          <SheetHeader className="">
+            <SheetTitle className="text-xl font-semibold text-left">Plan your play</SheetTitle>
+            <SheetDescription className="text-xs font-semibold text-left">
               By providing the sport, time and date you will be get the filtered
               grounds.
             </SheetDescription>
