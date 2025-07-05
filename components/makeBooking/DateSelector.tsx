@@ -25,23 +25,23 @@ const DateSelector: React.FC<DateSelectorProps> = ({ selectedDate, onDateSelect 
   });
 
   return (
-    <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-4 sm:p-6 mb-8">
-      <div className="md:overflow-visible overflow-x-auto pb-2 -mx-4 px-4 md:mx-0 md:px-0">
-        <div className="flex md:grid md:grid-cols-8 gap-2 md:gap-3">
+    <div className="bg-white p-2 sm:p-6">
+      <div className="">
+        <div className="grid md:grid-cols-8 gap-1 md:gap-3 grid-cols-8">
           {dates.map((dateItem) => (
             <button
               key={dateItem.dateISO}
               onClick={() => onDateSelect(dateItem.dateISO)}
-              className={`min-w-[64px] md:min-w-0 flex-shrink-0 p-3 md:p-4 rounded-xl text-center transition-all duration-200 hover:scale-105 ${
+              className={`p-2 md:p-4 rounded-sm text-center justify-center ${
                 selectedDate === dateItem.dateISO
-                  ? 'bg-green-500 text-white shadow-lg shadow-green-500/25'
-                  : 'bg-gray-50 hover:bg-gray-100 text-gray-800'
+                  ? 'bg-green-500 text-white'
+                  : 'bg-white text-gray-800'
               }`}
             >
-              <div className="text-xs font-medium mb-1">
+              <div className="text-[8px] md:text-sm font-semibold mb-1">
                 {dateItem.isToday ? 'Today' : dateItem.dayName}
               </div>
-              <div className="text-lg md:text-xl font-semibold">{dateItem.day}</div>
+              <div className="text-xs md:text-sm font-semibold mb-1">{dateItem.day}</div>
             </button>
           ))}
         </div>
