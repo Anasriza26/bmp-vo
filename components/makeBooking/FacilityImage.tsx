@@ -1,5 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
+import { BackButton } from '../home/BackButton';
 
 const FacilityImage: React.FC = () => {
   return (
@@ -10,6 +11,10 @@ const FacilityImage: React.FC = () => {
         fill
         className="object-cover"
       />
+
+      <div className=" absolute top-4 left-2 z-10">
+        <BackButton />
+      </div>
     </div>
   );
 };
