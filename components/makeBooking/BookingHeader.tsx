@@ -15,8 +15,8 @@ const BookingHeader: React.FC<BookingHeaderProps> = ({
   reviews,
 }) => {
   return (
-    <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-4 sm:p-6 mb-6 sm:mb-8">
-      <div className="flex flex-col gap-4">
+    <div className="bg-white p-2 sm:p-2">
+      <div className="flex flex-col gap-1">
         {/* Top Section: Name and Rating */}
         <div className="flex w-full justify-between items-center">
           <h1 className="text-lg sm:text-2xl font-semibold text-green-600">
