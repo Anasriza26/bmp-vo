@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { BackButton } from "../home/BackButton";
 
 const HeroImage = ({src,alt} : {src: string, alt: string}) => (
   <div className="relative h-96 rounded-b-lg overflow-hidden shadow-lg">
@@ -8,6 +9,10 @@ const HeroImage = ({src,alt} : {src: string, alt: string}) => (
       fill
       className="object-cover"
     />
+    <div className="absolute top-4 left-2 z-10 ">
+      <BackButton  />
+    </div>
+    
   </div>
 );
 
