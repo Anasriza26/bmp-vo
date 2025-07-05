@@ -7,7 +7,7 @@ export const BackButton = () => {
       <Button
         variant="ghost"
         size="icon"
-        className="h-10 w-10 rounded-full bg-gray-100"
+        className="h-10 w-10 rounded-full bg-white shadow-xl"
       >
         <ArrowLeft className="h-5 w-5" />
       </Button>
