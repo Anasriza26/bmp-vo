@@ -5,6 +5,7 @@ import FacilityImage from "@/components/makeBooking/FacilityImage";
 import DateSelector from "@/components/makeBooking/DateSelector";
 import TimeSlotGrid from "@/components/makeBooking/TimeSlotGrid";
 import BookingSummary from "@/components/makeBooking/BookingSummery";
+import { MoveLeft } from "lucide-react";
 
 const MakeBooking = () => {
   const [selectedDate, setSelectedDate] = useState("22");
@@ -20,19 +21,16 @@ const MakeBooking = () => {
     );
   };
   return (
-    <div className="min-h-screen bg-gray-50">
-      <div className="max-w-2xl mx-auto  py-8">
+    <div className="min-h-screen bg-white">
+      <div className="max-w-3xl mx-auto  py-8">
+        <FacilityImage />
 
-         <FacilityImage />
-         
         <BookingHeader
           facilityName="Futsal Prime - FD"
           location="Puttalam, Sri Lanka"
           rating={4.5}
           reviews={127}
         />
-
-       
 
         <DateSelector
           selectedDate={selectedDate}
@@ -44,7 +42,7 @@ const MakeBooking = () => {
           onSlotSelect={handleSlotSelect}
         />
 
-        <div className="mt-8">
+        <div className="">
           <BookingSummary
             selectedDate={selectedDate}
             selectedSlots={selectedSlots}
@@ -53,6 +51,12 @@ const MakeBooking = () => {
             pricePerHour={25}
           />
         </div>
+
+        {/* <div className="mt-8">
+          <button className="flex items-center gap-2 text-primary">
+            <MoveLeft className="w-4 h-4" />
+          </button>
+        </div> */}
       </div>
     </div>
   );
