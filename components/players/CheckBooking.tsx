@@ -77,7 +77,7 @@ const CheckBooking = () => {
 
   const getTabButtonClass = (tab: string) => {
     const baseClass =
-      "px-4 py-2 rounded-full text-sm font-medium transition-colors";
+      "px-4 py-2 rounded-full text-xs font-semibold transition-colors";
     if (tab === activeTab) {
       switch (tab) {
         case "booked":
@@ -179,7 +179,7 @@ const CheckBooking = () => {
                     <div className="space-y-4">
                       {Object.entries(groupedSlots).map(([date, times]) => (
                         <div key={date}>
-                          <div className="text-gray-500 text-sm md:text-base font-medium mb-3">
+                          <div className="text-gray-500 text-sm md:text-base font-medium mb-3 p-2 shadow-sm ">
                             {date}
                           </div>
                           <div className="flex flex-wrap gap-2 md:gap-3">
