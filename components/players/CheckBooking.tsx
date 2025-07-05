@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { Card, CardContent } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { BackButton } from "../home/BackButton";
 
 interface TimeSlot {
   time: string;
@@ -109,6 +110,9 @@ const CheckBooking = () => {
       <div className="min-h-screen bg-gray-50">
         {/* Main Content */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-8">
+          <div className="top-2 left-2">
+            <BackButton />
+          </div>
           {/* Header */}
           <div className="flex justify-between items-start mb-6 md:mb-8">
             <div className="flex-1">
