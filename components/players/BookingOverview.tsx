@@ -7,6 +7,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
 import Link from "next/link";
 import Image from "next/image";
+import { BackButton } from "../home/BackButton";
 
 interface BookingSlot {
   id: string;
@@ -34,6 +35,9 @@ const BookingOverview = () => {
     <>
       <div className="min-h-screen bg-gray-50 p-4 md:p-6 lg:p-8">
         <div className="mx-auto max-w-2xl">
+          <div className="top-2 left-2">
+            <BackButton />
+          </div>
           {/* Header */}
           <div className="mb-6 md:mb-8">
             <h1 className="text-2xl md:text-3xl font-semibold text-gray-900">
