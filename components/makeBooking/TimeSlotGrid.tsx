@@ -43,33 +43,20 @@ const TimeSlotGrid: React.FC<TimeSlotGridProps> = ({ selectedSlots, onSlotSelect
   };
 
   const getSlotStyles = (status: string) => {
-    const baseStyles = 'p-2 md:p-3 lg:p-4 rounded-lg md:rounded-xl border-2 text-center transition-all duration-200';
+    const baseStyles = 'p-2 md:p-3 lg:p-4 rounded-md md:rounded-xl border-2 text-center';
     
     switch (status) {
       case 'selected':
-        return `${baseStyles} bg-green-500 text-white border-green-500 shadow-lg shadow-green-500/25 scale-105`;
+        return `${baseStyles} bg-green-500 text-white border-primary`;
       case 'unavailable':
         return `${baseStyles} bg-gray-100 text-gray-400 border-gray-200 cursor-not-allowed`;
       default:
-        return `${baseStyles} bg-white text-gray-700 border-gray-200 hover:border-green-300 hover:bg-green-50 hover:scale-105`;
+        return `${baseStyles} bg-white text-black border-primary`;
     }
   };
 
   return (
-    <div className="bg-white rounded-lg md:rounded-xl shadow-sm border border-gray-100 p-4 md:p-6 mb-6 md:mb-8">
-      <div className="flex flex-col md:flex-row md:items-center justify-between mb-4 md:mb-6 gap-3">
-        <h2 className="text-lg md:text-xl font-semibold text-gray-900">Available Time Slots</h2>
-        <div className="flex items-center gap-2 md:gap-4 text-xs md:text-sm">
-          <div className="flex items-center gap-1 md:gap-2">
-            <div className="w-2 h-2 md:w-3 md:h-3 bg-green-500 rounded-full"></div>
-            <span className="text-gray-600">Selected</span>
-          </div>
-          <div className="flex items-center gap-1 md:gap-2">
-            <div className="w-2 h-2 md:w-3 md:h-3 bg-gray-200 rounded-full"></div>
-            <span className="text-gray-600">Unavailable</span>
-          </div>
-        </div>
-      </div>
+    <div className="bg-white rounded-md md:rounded-xl md:p-6 mb-2 md:mb-8 px-4">
       <div className="grid grid-cols-4 sm:grid-cols-4 md:grid-cols-6 gap-2 md:gap-3">
         {timeSlots.map((slot) => {
           const slotKey = `${slot.time} ${slot.period}`;
@@ -78,12 +65,22 @@ const TimeSlotGrid: React.FC<TimeSlotGridProps> = ({ selectedSlots, onSlotSelect
           return (
             <button
               key={slotKey}
-              onClick={() => status === 'available' || status === 'selected' ? onSlotSelect(slotKey) : undefined}
-              disabled={status === 'unavailable'}
-              className={`${getSlotStyles(status)}`}
+              onClick={() =>
+                status === "available" || status === "selected"
+                  ? onSlotSelect(slotKey)
+                  : undefined
+              }
+              disabled={status === "unavailable"}
+              className={`${getSlotStyles(
+                status
+              )} flex text-center items-center justify-center w-full`}
             >
-              <div className="font-medium text-sm md:font-semibold md:text-base">{slot.time}</div>
-              <div className="text-xs opacity-75">{slot.period}</div>
+              <div className="font-semibold text-xs md:font-semibold md:text-base text-center">
+                {slot.time}
+              </div>
+              <div className="text-xs md:text-base pl-[2px] font-semibold">
+                {slot.period}
+              </div>
             </button>
           );
         })}
