@@ -13,6 +13,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Mail, Key, Upload, User } from "lucide-react";
+import { BackButton } from "../home/BackButton";
 
 const Profile = () => {
   const [formData, setFormData] = useState({
@@ -27,10 +28,13 @@ const Profile = () => {
   };
   return (
     <>
-      <div className="min-h-screen bg-white p-4 md:p-8">
+      <div className="min-h-screen bg-white px-4 md:p-8">
         <div className="max-w-md mx-auto md:max-w-2xl lg:max-w-4xl">
           <Card className="border-none shadow-none  bg-white">
             <CardHeader className="px-0 md:px-6">
+               <div className="top-2 left-2">
+              <BackButton />
+            </div>
               <CardTitle className="text-2xl md:text-3xl font-semibold text-gray-900">
                 Personal info
               </CardTitle>
